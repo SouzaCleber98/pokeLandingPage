@@ -1,0 +1,20 @@
+.sobre {
+    background-color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .sobre h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #e60012; /* Vermelho Pokémon */
+  }
+  
+  .sobre p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  

@@ -1,0 +1,10 @@
+.footer {
+    background-color: #ffcb05; /* cor do header */
+    padding: 20px 0;
+    text-align: center;
+    color: #3b4cca; /* azul Pokémon */
+    font-size: 0.9rem;
+    margin-top: 40px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+  
