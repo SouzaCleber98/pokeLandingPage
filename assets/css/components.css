@@ -1,0 +1,18 @@
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo img {
+    max-width: 100%;
+    height: auto;
+    width: 40px; 
+    height: auto;
+    display: block;
+    
+   
+  }

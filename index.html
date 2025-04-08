@@ -3,34 +3,37 @@
 
 
 <head>
-    <meta charset="UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="Landing page para um projeto de pokemon">
-    
-    <meta name="author" content="CleberSouza">
-    
-    <meta name="keywords" content="Pokemon,landingpage">
-    
-    <title>Pokelanding</title>
-    
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Landing page para um projeto de pokemon">
+
+  <meta name="author" content="CleberSouza">
+
+  <meta name="keywords" content="Pokemon,landingpage">
+
+  <title>Pokelanding</title>
+
+  <link rel="stylesheet" href="style.css">
+ 
+
 
 </head>
+
 <body>
 
- <!-- Header -->
-   <header>
+  <!-- Header -->
+  <header>
     <div class="container">
       <div class="logo">
         <a href="#"><img src="assets/img/logo.png" alt="Logo do Pokémon" width="40px" /></a>
       </div>
-  
+
       <div class="menu-toggle" id="menu-toggle">
         &#9776;
       </div>
-  
+
       <nav class="menu" id="menu">
         <ul>
           <li><a href="#">Login</a></li>
@@ -39,49 +42,79 @@
         </ul>
       </nav>
     </div>
-    </header>
+  </header>
 
-  
-    <!-- Fim do Header -->
 
-    <section class="hero">
-        <div class="container">
-          <h1>Pokelanding</h1>
-          <p>Descubra o mundo Pokémon</p>
-        </div>
-    </section>
+  <!-- Fim do Header -->
 
-      <!-- Banner -->
-    <section class="banner">
-        <div class="container">
-          <h1>Encontre seu Pokémon favorito</h1>
-          <p>Busque por nome ou número na Pokédex</p>
-          <form class="search-form">
-            <input type="text" placeholder="Digite o nome ou número..." />
-            <button type="submit">Buscar</button>
-          </form>
-        </div>
-    </section>
-      <!-- Fim do Banner -->
+  <section class="hero">
+    <div class="container">
+      <h1>Pokelanding</h1>
+      <p>Descubra o mundo Pokémon</p>
+    </div>
+  </section>
 
-    <section id="sobre" class="sobre">
-        <div class="container">
-          <h2>Sobre o Projeto</h2>
-          <p>
-            Esta é uma Pokédex interativa desenvolvida para os fãs de Pokémon! Aqui 
-            você pode buscar por Pokémon, ver detalhes sobre eles, e explorar o universo Pokémon de forma fácil e intuitiva.
-          </p>
-        </div>
-    </section>
-
-    
-      <!--Footer-->
-    <footer class="footer">
-        <div class="container">
-          <p>&copy; 2025 Pokédex Interativa. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+  <!-- Banner -->
+  <section class="banner">
+    <div class="container">
+      <div class="text-banner"> 
+        <h1>Encontre seu Pokémon favorito</h1>
+        <p>Busque por nome ou número na Pokédex</p>
+        <form class="search-form">
+          <input type="text" placeholder="Digite o nome ou número..." />
+          <button type="submit">Buscar</button>
+        </form>
+      </div>
       
+      
+      
+      
+    </div>
+  </section>
+  <!-- Fim do Banner -->
+
+<!-- Sobre -->
+<section id="sobre" class="sobre">
+  <div class="container">
+    <div class="sobre-conteudo">
+      <div class="descricao">
+        <h2>Sobre o Projeto</h2>
+        <p>
+          Esta é uma Pokédex interativa desenvolvida para os fãs de Pokémon! Aqui
+          você pode buscar por Pokémon, ver detalhes sobre eles, e explorar o universo Pokémon de forma fácil e intuitiva.
+        </p>
+      </div>
+
+      <div class="detalhes">
+        <ul>
+          <li>🔍 Busca rápida por nome ou número do Pokémon.</li>
+          <li>📊 Detalhes completos sobre habilidades e estatísticas.</li>
+          <li>📱 Design responsivo para todos os dispositivos.</li>
+        </ul>
+        <div class="btn-container">
+          <a href="#pokedex" class="btn-comecar">Começar a Busca</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Fim do Sobre -->
+
+
+
+  <!--Footer-->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <span>&copy; 2025 Pokédex Interativa</span>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/SouzaCleber98" target="_blank"><img src="assets/img/github.png" alt="link do github" width="40px" /></a>
+        <a href="https://www.linkedin.com/in/cleber-souza-62170b270/" target="_blank"><img src="assets/img/linkdin.png" alt="Link do linkedin" width="40px" /></a>
+      </div>
+    </div>
+  </footer>
+  <!-- Fim do Footer -->  
 
 
 
@@ -96,6 +129,8 @@
 
 
 
-    <script src="assets/js/header.js"></script>
+
+  <script src="assets/js/header.js"></script>
 </body>
+
 </html>

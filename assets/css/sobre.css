@@ -3,6 +3,8 @@
     padding: 60px 20px;
     text-align: center;
     color: #333;
+    
+    
   }
   
   .sobre h2 {
@@ -13,8 +15,50 @@
   
   .sobre p {
     font-size: 1.1rem;
-    max-width: 800px;
+   
     margin: 0 auto;
     line-height: 1.6;
   }
+  .sobre-conteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 40px 0;
+
+  padding: 40px 0;
+  }
   
+  @media (min-width: 768px) {
+   
+    }
+  
+    
+    
+  
+  
+
+
+
+  /* Botão*/
+
+  .btn-container {
+    
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  .btn-comecar {
+    background-color: #ffc107;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-comecar:hover {
+    background-color: #e0a800;
+  }

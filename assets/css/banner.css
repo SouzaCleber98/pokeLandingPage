@@ -1,11 +1,14 @@
 .banner {
     /*background: url('assets/img/banner.jpg') no-repeat center center/cover;*/
     background-color: blue;
+    width: auto;
+    
     padding: 100px 20px;
     color: #fff;
     text-align: center;
   }
-  
+ 
+
   .banner h1 {
     font-size: 2rem;
     margin-bottom: 10px;
@@ -14,6 +17,16 @@
   .banner p {
     font-size: 1.2rem;
     margin-bottom: 30px;
+  }
+
+  .banner .text-banner {
+    margin: auto;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #ffcb05; 
   }
   
   .search-form {

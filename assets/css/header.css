@@ -5,25 +5,6 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
   
-  .container {
-    max-width: 80%;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo img {
-    max-width: 100%;
-    height: auto;
-    width: 40px; 
-    height: auto;
-    display: block;
-    
-   
-  }
-  
   .menu ul {
     list-style: none;
     display: flex;
