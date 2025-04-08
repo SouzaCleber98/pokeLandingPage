@@ -37,7 +37,7 @@
       <nav class="menu" id="menu">
         <ul>
           <li><a href="#">Login</a></li>
-          <li><a href="#cadastro">Cadastro</a></li>
+          <li><a href="#" id="openModal">Cadastro</a></li>
           <li><a href="#pokedex">Pokedex</a></li>
         </ul>
       </nav>
@@ -118,6 +118,20 @@
 
 
 
+  <!-- Modal de Login -->
+  <div id="modalCadastro" class="modal">
+    <div class="modal-content">
+      <span class="close" id="fecharModal">&times;</span>
+      <h2>Cadastro</h2>
+      <form>
+        <input type="text" placeholder="Nome completo" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Senha" required />
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+  <!-- Fim do Modal de Login -->
 
 
 
@@ -128,8 +142,8 @@
 
 
 
-
-
+  <!-- Scripts JS -->
+  <script src="assets/js/modal.js"></script>
   <script src="assets/js/header.js"></script>
 </body>
 
