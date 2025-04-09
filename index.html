@@ -16,7 +16,7 @@
   <title>Pokelanding</title>
 
   <link rel="stylesheet" href="style.css">
- 
+
 
 
 </head>
@@ -57,7 +57,7 @@
   <!-- Banner -->
   <section class="banner">
     <div class="container">
-      <div class="text-banner"> 
+      <div class="text-banner">
         <h1>Encontre seu Pokémon favorito</h1>
         <p>Busque por nome ou número na Pokédex</p>
         <form class="search-form">
@@ -65,40 +65,41 @@
           <button type="submit">Buscar</button>
         </form>
       </div>
-      
-      
-      
-      
+
+
+
+
     </div>
   </section>
   <!-- Fim do Banner -->
 
-<!-- Sobre -->
-<section id="sobre" class="sobre">
-  <div class="container">
-    <div class="sobre-conteudo">
-      <div class="descricao">
-        <h2>Sobre o Projeto</h2>
-        <p>
-          Esta é uma Pokédex interativa desenvolvida para os fãs de Pokémon! Aqui
-          você pode buscar por Pokémon, ver detalhes sobre eles, e explorar o universo Pokémon de forma fácil e intuitiva.
-        </p>
-      </div>
+  <!-- Sobre -->
+  <section id="sobre" class="sobre">
+    <div class="container">
+      <div class="sobre-conteudo">
+        <div class="descricao">
+          <h2>Sobre o Projeto</h2>
+          <p>
+            Esta é uma Pokédex interativa desenvolvida para os fãs de Pokémon! Aqui
+            você pode buscar por Pokémon, ver detalhes sobre eles, e explorar o universo Pokémon de forma fácil e
+            intuitiva.
+          </p>
+        </div>
 
-      <div class="detalhes">
-        <ul>
-          <li>🔍 Busca rápida por nome ou número do Pokémon.</li>
-          <li>📊 Detalhes completos sobre habilidades e estatísticas.</li>
-          <li>📱 Design responsivo para todos os dispositivos.</li>
-        </ul>
-        <div class="btn-container">
-          <a href="#pokedex" class="btn-comecar">Começar a Busca</a>
+        <div class="detalhes">
+          <ul>
+            <li>🔍 Busca rápida por nome ou número do Pokémon.</li>
+            <li>📊 Detalhes completos sobre habilidades e estatísticas.</li>
+            <li>📱 Design responsivo para todos os dispositivos.</li>
+          </ul>
+          <div class="btn-container">
+            <a href="#pokedex" class="btn-comecar">Começar a Busca</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- Fim do Sobre -->
+  </section>
+  <!-- Fim do Sobre -->
 
 
 
@@ -109,12 +110,14 @@
         <span>&copy; 2025 Pokédex Interativa</span>
       </div>
       <div class="social-links">
-        <a href="https://github.com/SouzaCleber98" target="_blank"><img src="assets/img/github.png" alt="link do github" width="40px" /></a>
-        <a href="https://www.linkedin.com/in/cleber-souza-62170b270/" target="_blank"><img src="assets/img/linkdin.png" alt="Link do linkedin" width="40px" /></a>
+        <a href="https://github.com/SouzaCleber98" target="_blank"><img src="assets/img/github.png" alt="link do github"
+            width="40px" /></a>
+        <a href="https://www.linkedin.com/in/cleber-souza-62170b270/" target="_blank"><img src="assets/img/linkdin.png"
+            alt="Link do linkedin" width="40px" /></a>
       </div>
     </div>
   </footer>
-  <!-- Fim do Footer -->  
+  <!-- Fim do Footer -->
 
   <!-- Modal -->
   <!-- Modal de Login -->
@@ -124,7 +127,9 @@
       <h2>Login</h2>
       <form>
         <input type="email" placeholder="Email" required />
+        <small id="login-email-msg" class="mensagem"></small>
         <input type="password" placeholder="Senha" required />
+        <small id="login-senha-msg" class="mensagem"></small>
         <button type="submit">Entrar</button>
       </form>
     </div>
@@ -138,8 +143,10 @@
       <form>
         <input type="text" placeholder="Nome completo" required />
         <input type="email" placeholder="Email" required />
+        <small id="email-msg" class="mensagem"></small>
         <input type="password" placeholder="Senha" required />
-        <input type="text" id="cpf" maxlength="14" placeholder="CPF" required/>
+        <input type="text" id="cpf" maxlength="14" placeholder="CPF" required />
+        <small id="cpf-msg" class="mensagem"></small>
         <button type="submit">Cadastrar</button>
       </form>
     </div>
@@ -148,22 +155,24 @@
   <!-- Fim do Modal -->
 
 
-
-
+  <!--Toast-->
+  <div id="toast" class="toast"></div>
+  <!-- Fim do Toast -->
 
 
 
 
 
   <!-- Scripts JS -->
-  
-  
+
+
   <script src="assets/js/modal.js"></script>
   <script src="assets/js/header.js"></script>
   <script src="assets/js/cpfMask.js"></script>
   <script src="assets/js/cpfValidate.js"></script>
   <script src="assets/js/cpfListener.js"></script>
-  <script src="assets/js/auth.js"></script>
+  <script type="module" src="assets/js/auth.js"></script>
+
   <!--Fim Script-->
 
 

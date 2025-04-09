@@ -1,25 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cpfInput = document.getElementById("cpf");
+  const cpfMsg = document.getElementById("cpf-msg");
 
-  if (cpfInput) {
-    // Valida ao sair do campo
-    cpfInput.addEventListener("blur", () => {
-      const valido = validarCPF(cpfInput.value);
-      cpfInput.classList.toggle("erro-cpf", !valido);
-    });
+  // Remove o estado de erro/sucesso ao digitar
+  cpfInput.addEventListener("input", () => {
+    cpfInput.classList.remove("erro", "sucesso");
+    cpfMsg.textContent = "";
+    cpfMsg.classList.remove("erro", "sucesso");
+  });
 
-    // Valida ao enviar o formulário
-    const form = cpfInput.closest("form");
-    if (form) {
-      form.addEventListener("submit", (event) => {
-        const valido = validarCPF(cpfInput.value);
-        cpfInput.classList.toggle("erro-cpf", !valido);
+  // Validação ao sair do campo
+  cpfInput.addEventListener("blur", () => {
+    const valido = validarCPF(cpfInput.value);
 
-        if (!valido) {
-          cpfInput.focus();
-          event.preventDefault(); // Impede o envio
-        }
-      });
+    cpfInput.classList.remove("erro", "sucesso");
+    cpfMsg.classList.remove("erro", "sucesso");
+
+    if (!valido) {
+      cpfInput.classList.add("erro");
+      cpfMsg.textContent = "CPF inválido.";
+      cpfMsg.classList.add("erro");
+    } else {
+      cpfInput.classList.add("sucesso");
+      cpfMsg.textContent = "";
+      cpfMsg.classList.add("sucesso");
     }
-  }
+  });
 });
