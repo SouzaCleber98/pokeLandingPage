@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    emailInput.addEventListener("input", debounce(verificarEmail, 400));
+    emailInput.addEventListener("input", debounce(verificarEmail, 600));
 
     // Cadastro
     cadastroForm.addEventListener("submit", (e) => {
@@ -106,8 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Login (continua igual)
     const loginEmailInput = loginForm.querySelector("input[placeholder='Email']");
     const loginSenhaInput = loginForm.querySelector("input[placeholder='Senha']");
-    const loginEmailMsg = document.getElementById("login-email-msg");
-    const loginSenhaMsg = document.getElementById("login-senha-msg");
+    const loginMsg = document.getElementById("login-msg");
 
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -117,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const usuarios = getUsuarios();
 
         [loginEmailInput, loginSenhaInput].forEach(i => i.classList.remove("erro", "sucesso"));
-        [loginEmailMsg, loginSenhaMsg].forEach(m => {
+        [loginMsg].forEach(m => {
             m.classList.remove("erro", "sucesso");
             m.textContent = "";
         });
@@ -138,21 +137,19 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             loginEmailInput.classList.add("erro");
             loginSenhaInput.classList.add("erro");
-            loginEmailMsg.textContent = "Email ou senha inválidos.";
-            loginEmailMsg.classList.add("erro");
+            loginMsg.textContent = "Email ou senha inválidos.";
+            loginMsg.classList.add("erro");
         }
     });
     // Remover erro visual ao digitar novamente
     loginEmailInput.addEventListener("input", () => {
         loginEmailInput.classList.remove("erro", "sucesso");
-        loginEmailMsg.textContent = "";
-        loginEmailMsg.classList.remove("erro", "sucesso");
+        loginMsg.textContent = "";
+        loginMsg.classList.remove("erro", "sucesso");
     });
 
     loginSenhaInput.addEventListener("input", () => {
         loginSenhaInput.classList.remove("erro", "sucesso");
-        loginSenhaMsg.textContent = "";
-        loginSenhaMsg.classList.remove("erro", "sucesso");
     });
 
 });
