@@ -1,44 +1,43 @@
 .container {
-    max-width: 90%;
-    margin: 0 auto;
-    display: flex;
-    padding: 10px;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo img {
-    max-width: 100%;
-    height: auto;
-    width: 40px; 
-    height: auto;
-    display: block;
-    
-   
-  }
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  
-  .toast {
-    visibility: hidden;
-    min-width: 200px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 8px;
-    padding: 12px 20px;
-    position: fixed;
-    z-index: 1000;
-    left: 50%;
-    bottom: 30px;
-    transform: translateX(-50%);
-    font-size: 16px;
-    opacity: 0;
-    transition: opacity 0.5s ease, bottom 0.5s ease;
-  }
-  
-  .toast.show {
-    visibility: visible;
-    opacity: 1;
-    bottom: 50px;
-  }
-  
+.logo img {
+  max-width: 100%;
+  height: auto;
+  width: 40px;
+  height: auto;
+  display: block;
+
+}
+
+
+.toast {
+  visibility: hidden;
+  min-width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 12px 20px;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  font-size: 16px;
+  opacity: 0;
+  transition: opacity 0.5s ease, bottom 0.5s ease;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 50px;
+}
