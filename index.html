@@ -40,7 +40,7 @@
           <li id="user-info"></li>
           <li><a href="#pokedex">Pokedex</a></li>
         </ul>
-      </nav>          
+      </nav>
     </div>
   </header>
 
@@ -55,22 +55,97 @@
   </section>
 
   <!-- Banner -->
-  <section class="banner">
-    <div class="container">
-      <div class="text-banner">
-        <h1>Encontre seu Pokémon favorito</h1>
-        <p>Busque por nome ou número na Pokédex</p>
-        <form class="search-form">
-          <input type="text" placeholder="Digite o nome ou número..." />
-          <button type="submit">Buscar</button>
-        </form>
-      </div>
-
-
-
-
-    </div>
+  <!-- Banner Interativo com Caixa de Busca em Todos os Slides -->
+  <section class="carousel" aria-label="Gallery">
+    <ol class="carousel__viewport">
+  
+      <li id="carousel__slide1" tabindex="0" class="carousel__slide">
+        <img src="./assets/img/pikachu.webp" alt="Banner 1" class="banner-img" />
+        <div class="carousel__snapper">
+          <div class="text-banner">
+            <h1>Encontre seu Pokémon favorito</h1>
+            <p>Busque por nome ou número na Pokédex</p>
+            <form class="search-form">
+              <input type="text" placeholder="Digite o nome ou número..." />
+              <button type="submit">Buscar</button>
+            </form>
+          </div>
+          <a href="#carousel__slide4" class="carousel__prev">‹</a>
+          <a href="#carousel__slide2" class="carousel__next">›</a>
+        </div>
+      </li>
+  
+      <li id="carousel__slide2" tabindex="0" class="carousel__slide">
+        <img src="./assets/img/charmander.jpg" alt="Banner 2" class="banner-img" />
+        <div class="carousel__snapper">
+          <div class="text-banner">
+            <h1>Encontre seu Pokémon favorito</h1>
+            <p>Busque por nome ou número na Pokédex</p>
+            <form class="search-form">
+              <input type="text" placeholder="Digite o nome ou número..." />
+              <button type="submit">Buscar</button>
+            </form>
+          </div>
+          <a href="#carousel__slide1" class="carousel__prev">‹</a>
+          <a href="#carousel__slide3" class="carousel__next">›</a>
+        </div>
+      </li>
+  
+      <li id="carousel__slide3" tabindex="0" class="carousel__slide">
+        <img src="./assets/img/bulbasaur.jpg" alt="Banner 3" class="banner-img" />
+        <div class="carousel__snapper">
+          <div class="text-banner">
+            <h1>Encontre seu Pokémon favorito</h1>
+            <p>Busque por nome ou número na Pokédex</p>
+            <form class="search-form">
+              <input type="text" placeholder="Digite o nome ou número..." />
+              <button type="submit">Buscar</button>
+            </form>
+          </div>
+          <a href="#carousel__slide2" class="carousel__prev">‹</a>
+          <a href="#carousel__slide4" class="carousel__next">›</a>
+        </div>
+      </li>
+  
+      <li id="carousel__slide4" tabindex="0" class="carousel__slide">
+        <img src="./assets/img/squirtle.png" alt="Banner 4" class="banner-img" />
+        <div class="carousel__snapper">
+          <div class="text-banner">
+            <h1>Encontre seu Pokémon favorito</h1>
+            <p>Busque por nome ou número na Pokédex</p>
+            <form class="search-form">
+              <input type="text" placeholder="Digite o nome ou número..." />
+              <button type="submit">Buscar</button>
+            </form>
+          </div>
+          <a href="#carousel__slide3" class="carousel__prev">‹</a>
+          <a href="#carousel__slide1" class="carousel__next">›</a>
+        </div>
+      </li>
+  
+    </ol>
+  
+    <aside class="carousel__navigation">
+      <ol class="carousel__navigation-list">
+        <li class="carousel__navigation-item">
+          <a href="#carousel__slide1" class="carousel__navigation-button">1</a>
+        </li>
+        <li class="carousel__navigation-item">
+          <a href="#carousel__slide2" class="carousel__navigation-button">2</a>
+        </li>
+        <li class="carousel__navigation-item">
+          <a href="#carousel__slide3" class="carousel__navigation-button">3</a>
+        </li>
+        <li class="carousel__navigation-item">
+          <a href="#carousel__slide4" class="carousel__navigation-button">4</a>
+        </li>
+      </ol>
+    </aside>
   </section>
+  
+
+
+
   <!-- Fim do Banner -->
 
   <!-- Sobre -->
@@ -109,10 +184,10 @@
         <span>&copy; 2025 Pokédex Interativa</span>
       </div>
       <div class="social-links">
-        <a href="https://github.com/SouzaCleber98" target="_blank"><img src="./assets/img/github.png" alt="link do github"
-            width="40px" /></a>
-        <a href="https://www.linkedin.com/in/cleber-souza-62170b270/" target="_blank"><img src="./assets/img/linkdin.png"
-            alt="Link do linkedin" width="40px" /></a>
+        <a href="https://github.com/SouzaCleber98" target="_blank"><img src="./assets/img/github.png"
+            alt="link do github" width="40px" /></a>
+        <a href="https://www.linkedin.com/in/cleber-souza-62170b270/" target="_blank"><img
+            src="./assets/img/linkdin.png" alt="Link do linkedin" width="40px" /></a>
       </div>
     </div>
   </footer>
@@ -170,6 +245,8 @@
   <script src="./assets/js/cpfValidate.js"></script>
   <script src="./assets/js/cpfListener.js"></script>
   <script type="module" src="./assets/js/auth.js"></script>
+  <script src="./assets/js/carousel-auto.js"></script>
+
 
   <!--Fim Script-->
 
