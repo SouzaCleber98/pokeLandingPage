@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    // Login (continua igual)
+    // Login
     const loginEmailInput = loginForm.querySelector("input[placeholder='Email']");
     const loginSenhaInput = loginForm.querySelector("input[placeholder='Senha']");
     const loginMsg = document.getElementById("login-msg");
@@ -132,7 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
             limparCamposFormulario(loginForm);
             fecharModal("modal-login");
             mostrarToast("Login realizado com sucesso!");
-
+            localStorage.setItem("usuarioLogado", JSON.stringify(usuarioEncontrado));
+            atualizarUI();
 
         } else {
             loginEmailInput.classList.add("erro");
@@ -151,5 +152,43 @@ document.addEventListener("DOMContentLoaded", () => {
     loginSenhaInput.addEventListener("input", () => {
         loginSenhaInput.classList.remove("erro", "sucesso");
     });
-
+    atualizarUI();
 });
+
+
+// Após Logar usuário com sucesso, atualizar a UI
+
+function atualizarUI() {
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+    const loginItem = document.getElementById("btn-login");
+    const cadastroItem = document.getElementById("btn-cadastro");
+    const userInfo = document.getElementById("user-info");
+  
+    if (usuarioLogado) {
+      if (loginItem) loginItem.style.display = "none";
+      if (cadastroItem) cadastroItem.style.display = "none";
+        
+      if (userInfo) {
+        userInfo.innerHTML = `
+          <span> ${usuarioLogado.nome}</span>
+          <a href="#" id="btn-logout">Sair</a>
+        `;
+      }
+  
+      const btnLogout = document.getElementById("btn-logout");
+      if (btnLogout) {
+        btnLogout.addEventListener("click", (e) => {
+          e.preventDefault();
+          localStorage.removeItem("usuarioLogado");
+          atualizarUI();
+          mostrarToast("Logout realizado com sucesso!");
+        });
+      }
+  
+    } else {
+      if (loginItem) loginItem.style.display = "list-item";
+      if (cadastroItem) cadastroItem.style.display = "list-item";
+      if (userInfo) userInfo.innerHTML = "";
+    }
+  }
+  
