@@ -7,12 +7,6 @@
     margin-top: 40px;
   }
   
-  .footer .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
   .footer .footer-content {
     display: flex;
     justify-content: space-between;

@@ -1,29 +1,37 @@
 /* Header */
 header {
   background-color: #ffcb05;
-  padding: 10px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.container {
+/* Container específico do header */
+header .container {
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* User Info */
+#user-info {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 0 20px;
+  gap: 10px;
+  font-size: 1rem;
+  animation: fadeIn 0.4s ease-in-out;
 }
 
-/* Logo */
-.logo img {
-  vertical-align: middle;
+#user-info span {
+  font-weight: bold;
+  color: green;
 }
-
-/* Menu principal */
+/* Menu */
 .menu ul {
   list-style: none;
   display: flex;
-  align-items: center;
-  gap: 15px;
+  gap: 10px;
   margin: 0;
   padding: 0;
 }
@@ -39,7 +47,7 @@ header {
   color: #2a2a2a;
 }
 
-/* Botão de menu responsivo */
+/* Menu responsivo (mobile) */
 .menu-toggle {
   display: none;
   font-size: 28px;
@@ -47,49 +55,7 @@ header {
   cursor: pointer;
 }
 
-/* User Info */
-#user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 1rem;
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-#user-info span {
-  font-weight: bold;
-  color: #fff;
-}
-
-#btn-logout {
-  background-color: #ff4d4d;
-  color: white;
-  padding: 0.3rem 0.6rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-#btn-logout:hover {
-  background-color: #e60000;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsivo */
-@media screen and (max-width: 768px) {
+@media (max-width: 425px) {
   .menu-toggle {
     display: block;
   }
@@ -97,11 +63,13 @@ header {
   nav.menu {
     display: none;
     flex-direction: column;
-    width: 100%;
+    position: absolute;
+    top: 70px;
+    right: 20px;
     background-color: #ffcb05;
     padding: 15px 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    border-radius: 0 0 6px 6px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
 
   nav.menu.active {
@@ -111,10 +79,5 @@ header {
   .menu ul {
     flex-direction: column;
     gap: 10px;
-  }
-
-  .container {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }
