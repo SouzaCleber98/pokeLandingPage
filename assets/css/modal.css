@@ -9,7 +9,8 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5); /* fundo escuro semi-transparente */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* fundo escuro semi-transparente */
 }
 
 /* Conteúdo do modal */
@@ -21,7 +22,8 @@
   width: 90%;
   max-width: 400px;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* sombra para dar destaque */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  /* sombra para dar destaque */
 }
 
 /* Botão fechar (X) */
@@ -67,7 +69,7 @@
 
 /* Mensagem base reutilizável */
 .mensagem {
-  font-size: 0.875rem; 
+  font-size: 0.875rem;
   margin-top: -3px;
   margin-bottom: 8px;
   display: block;

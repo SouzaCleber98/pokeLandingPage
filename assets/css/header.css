@@ -19,7 +19,6 @@ header .container {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1rem;
   animation: fadeIn 0.4s ease-in-out;
 }
 
@@ -27,6 +26,7 @@ header .container {
   font-weight: bold;
   color: green;
 }
+
 /* Menu */
 .menu ul {
   list-style: none;
@@ -81,6 +81,11 @@ header .container {
     flex-direction: column;
     gap: 10px;
   }
+
+  #user-info {
+    flex-direction: column;
+  }
+
 }
 
 .hero .container {

@@ -3,8 +3,12 @@ import { mostrarToast } from './function/toast.js';
 
 
 document.addEventListener("DOMContentLoaded", () => {
+
+
     const cadastroForm = document.querySelector("#modal-cadastro form");
     const loginForm = document.querySelector("#modal-login form");
+
+
 
     const getUsuarios = () => JSON.parse(localStorage.getItem("usuarios")) || [];
     const salvarUsuarios = (usuarios) =>
@@ -153,6 +157,20 @@ document.addEventListener("DOMContentLoaded", () => {
         loginSenhaInput.classList.remove("erro", "sucesso");
     });
     atualizarUI();
+
+    //teste
+    const usuarios = getUsuarios();
+    if (usuarios.length === 0) {
+        const usuarioPadrao = {
+            nome: "Usuário Padrão",
+            email: "teste@teste",
+            senha: "teste",
+            cpf: "000.000.000-00" // Defina um CPF válido ou fictício, se necessário
+        };
+        usuarios.push(usuarioPadrao);
+        salvarUsuarios(usuarios);
+    }
+
 });
 
 
@@ -163,32 +181,32 @@ function atualizarUI() {
     const loginItem = document.getElementById("btn-login");
     const cadastroItem = document.getElementById("btn-cadastro");
     const userInfo = document.getElementById("user-info");
-  
+
     if (usuarioLogado) {
-      if (loginItem) loginItem.style.display = "none";
-      if (cadastroItem) cadastroItem.style.display = "none";
-        
-      if (userInfo) {
-        userInfo.innerHTML = `
+        if (loginItem) loginItem.style.display = "none";
+        if (cadastroItem) cadastroItem.style.display = "none";
+
+        if (userInfo) {
+            userInfo.innerHTML = `
           <span> ${usuarioLogado.nome}</span>
           <a href="#" id="btn-logout">Sair</a>
         `;
-      }
-  
-      const btnLogout = document.getElementById("btn-logout");
-      if (btnLogout) {
-        btnLogout.addEventListener("click", (e) => {
-          e.preventDefault();
-          localStorage.removeItem("usuarioLogado");
-          atualizarUI();
-          mostrarToast("Logout realizado com sucesso!");
-        });
-      }
-  
+        }
+
+        const btnLogout = document.getElementById("btn-logout");
+        if (btnLogout) {
+            btnLogout.addEventListener("click", (e) => {
+                e.preventDefault();
+                localStorage.removeItem("usuarioLogado");
+                atualizarUI();
+                mostrarToast("Logout realizado com sucesso!");
+            });
+        }
+
     } else {
-      if (loginItem) loginItem.style.display = "list-item";
-      if (cadastroItem) cadastroItem.style.display = "list-item";
-      if (userInfo) userInfo.innerHTML = "";
+        if (loginItem) loginItem.style.display = "list-item";
+        if (cadastroItem) cadastroItem.style.display = "list-item";
+        if (userInfo) userInfo.innerHTML = "";
     }
-  }
-  
+}
+

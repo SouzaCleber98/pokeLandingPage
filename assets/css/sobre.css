@@ -1,58 +1,60 @@
 .sobre {
-    background-color: #fff;
-    padding: 60px 20px;
-    text-align: center;
-    color: #333;
-    
-    
-  }
-  
-  .sobre h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #e60012; /* Vermelho Pokémon */
-  }
-  
-  .sobre p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-  .sobre-conteudo {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    text-align: left;
-    gap: 20px;
-    padding: 40px 0;
-  }
-  
-  
-  
-    
-    
-  
-  
+  background-color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+  color: #333;
+
+
+}
+
+.sobre h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #e60012;
+  /* Vermelho Pokémon */
+}
+
+.sobre p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.sobre-conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+  gap: 20px;
+  padding: 40px 0;
+}
 
 
 
-  /* Botão*/
 
-  .btn-container {
-    
-    text-align: center;
-    margin-top: 60px;
-  }
-  
-  .btn-comecar {
-    background-color: #ffc107;
-    color: #000;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-comecar:hover {
-    background-color: #e0a800;
-  }
+
+
+
+
+
+
+/* Botão*/
+
+.btn-container {
+
+  text-align: center;
+  margin-top: 60px;
+}
+
+.btn-comecar {
+  background-color: #ffc107;
+  color: #000;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn-comecar:hover {
+  background-color: #e0a800;
+}
