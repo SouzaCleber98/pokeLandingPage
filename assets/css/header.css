@@ -79,7 +79,7 @@ header .container {
 
   .menu ul {
     flex-direction: column;
-    gap: 10px;
+    gap: 0px;
   }
 
   #user-info {
