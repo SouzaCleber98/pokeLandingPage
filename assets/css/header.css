@@ -79,6 +79,7 @@ header .container {
 
   .menu ul {
     flex-direction: column;
+    align-items: center;
     gap: 0px;
   }
 
