@@ -1,14 +1,18 @@
-const cpfInput = document.getElementById('cpf');
+// Seleciona todos os campos com a classe 'cpf'
+const cpfInputs = document.querySelectorAll('.cpf');
 
-cpfInput.addEventListener('input', () => {
-  let value = cpfInput.value.replace(/\D/g, ''); // remove tudo que não for número
+cpfInputs.forEach(cpfInput => {
+  cpfInput.addEventListener('input', () => {
+    let value = cpfInput.value.replace(/\D/g, ''); // Remove tudo que não for número
 
-  if (value.length > 11) value = value.slice(0, 11);
+    if (value.length > 11) value = value.slice(0, 11); // Limita o CPF a 11 dígitos
 
-  value = value
-    .replace(/(\d{3})(\d)/, '$1.$2')
-    .replace(/(\d{3})(\d)/, '$1.$2')
-    .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    // Aplica a máscara de CPF
+    value = value
+      .replace(/(\d{3})(\d)/, '$1.$2')  // Adiciona o primeiro ponto
+      .replace(/(\d{3})(\d)/, '$1.$2')  // Adiciona o segundo ponto
+      .replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Adiciona o traço
 
-  cpfInput.value = value;
+    cpfInput.value = value;  // Atualiza o valor no campo
+  });
 });

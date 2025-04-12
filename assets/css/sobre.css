@@ -1,10 +1,13 @@
 .sobre {
   background-color: #fff;
   padding: 60px 20px;
-  text-align: center;
   color: #333;
 
 
+}
+
+.sobre .container {
+  flex-direction: column
 }
 
 .sobre h2 {
@@ -22,10 +25,15 @@
 .sobre-conteudo {
   display: flex;
   flex-direction: column;
-  align-items: left;
   text-align: left;
   gap: 20px;
   padding: 40px 0;
+}
+
+.sobre-conteudo ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 

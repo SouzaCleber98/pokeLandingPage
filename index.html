@@ -177,7 +177,30 @@
     </div>
   </section>
   <!-- Fim do Sobre -->
-
+  <!--Contato-->
+  <section id="contato" class="contato">
+    <div class="container">
+      <h2>Contato</h2>
+      <p>Entre em contato conosco para mais informações!</p>
+      <form>
+        <div class="form-group">
+          <input type="text" placeholder="Nome" required />
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Email" required />
+        </div>
+        <div class="form-group">
+          <input type="text" class="cpf" maxlength="14" placeholder="CPF" required />
+          <small id="cpf-msg" class="mensagem"></small>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Mensagem" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-enviar">Enviar</button>
+      </form>
+    </div>
+  </section>
+  <!-- Fim do Contato -->
 
 
   <!--Footer-->
@@ -221,7 +244,7 @@
         <input type="email" placeholder="Email" required />
         <small id="email-msg" class="mensagem"></small>
         <input type="password" placeholder="Senha" required />
-        <input type="text" id="cpf" maxlength="14" placeholder="CPF" required />
+        <input type="text" class="cpf" maxlength="14" placeholder="CPF" required />
         <small id="cpf-msg" class="mensagem"></small>
         <button type="submit">Cadastrar</button>
       </form>
@@ -249,6 +272,7 @@
   <script src="./assets/js/cpfListener.js"></script>
   <script type="module" src="./assets/js/auth.js"></script>
   <script src="./assets/js/carousel-auto.js"></script>
+  <script type="module" src="./assets/js/contato.js"></script>
 
 
   <!--Fim Script-->

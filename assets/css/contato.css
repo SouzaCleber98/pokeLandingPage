@@ -1,0 +1,90 @@
+.contato {
+  padding: 60px 20px;
+  background-color: #f5f7fa;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.contato .container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  flex-direction: column;
+}
+
+.contato h2 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+  color: #333;
+}
+
+.contato p {
+  margin-bottom: 30px;
+  color: #666;
+  font-size: 1rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+button.btn-enviar {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 14px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.btn-enviar:hover {
+  background-color: #2980b9;
+}
+
+/* Feedback visual */
+input.erro,
+textarea.erro {
+  border-color: #e74c3c;
+}
+
+input.sucesso,
+textarea.sucesso {
+  border-color: #2ecc71;
+}
+
+small.mensagem {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.85rem;
+}
+
+small.erro {
+  color: #e74c3c;
+}
+
+small.sucesso {
+  color: #2ecc71;
+}

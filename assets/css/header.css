@@ -84,6 +84,7 @@ header .container {
 
   #user-info {
     flex-direction: column;
+    gap: 0px;
   }
 
 }
