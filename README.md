@@ -54,9 +54,10 @@ git clone https://github.com/SouzaCleber98/pokeLandingPage.git
 
 ## ✨ Futuras melhorias (sugestão)
 - Conectar a API oficial da Pokédex (PokéAPI)
-- Armazenamento real de usuários via Firebase ou banco de dados
+- Armazenamento real de usuários e mensagens do contatos via Firebase ou banco de dados
 - Melhor acessibilidade (teclado, leitores de tela)
 - Animações entre os slides ou feedbacks visuais mais ricos
+- Mudança e personalização de temas, e modo escuro.
 
 ## 📌 Observações
 - O projeto é acadêmico/experimental
