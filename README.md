@@ -11,7 +11,7 @@ PokéLanding é uma landing page interativa voltada para fãs de Pokémon. A pá
 - Responsividade para telas pequenas (mobile)
 - Feedback visual de sucesso/erro nos campos
 - Validação de CPF no formulário de cadastro
-- Login e cadastro com base local (via JSON temporário)
+- Login e cadastro com base local (via localStorage)
 - Favicon personalizado
 
 ## 🔧 Como usar
