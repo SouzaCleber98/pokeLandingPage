@@ -2,6 +2,10 @@ const pokedexContainer = document.getElementById('pokedex');
 const maxPokemon = 151;
 const MAX_IMAGE_RETRIES = 20;
 const IMAGE_RETRY_DELAY = 6000;
+const POKEMON_BATCH_SIZE = 20; // Número de Pokémon por "scroll"
+
+let currentOffset = 1; // Controla o índice do próximo Pokémon a ser carregado
+let isLoading = false; // Estado para controlar se o carregamento está em andamento
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -108,35 +112,57 @@ const createPokemonCard = (pokemon) => {
 };
 
 const loadPokemonImage = async (id, side, imageUrl, imgElement) => {
-  const storageKey = `pokemon_${side}_${id}`;
-
-  const cached = localStorage.getItem(storageKey);
-  if (cached) {
-    imgElement.src = cached;
-    imgElement.dataset.imageStatus = "cached";
-    return;
-  }
-
   try {
     const validUrl = await tryLoadImage(imageUrl);
     imgElement.src = validUrl;
     imgElement.dataset.imageStatus = "loaded";
-    // Salva no localStorage apenas se sucesso
-    if (!localStorage.getItem(storageKey)) {
-      localStorage.setItem(storageKey, validUrl);
-    }
   } catch (err) {
     console.warn(err);
   }
 };
 
-const init = async () => {
-  for (let i = 1; i <= maxPokemon; i++) {
+const loadPokemonBatch = async () => {
+  if (isLoading) return; // Se estiver carregando, não faz nada
+  isLoading = true; // Marca que o carregamento está em andamento
+
+  for (let i = currentOffset; i < currentOffset + POKEMON_BATCH_SIZE && i <= maxPokemon; i++) {
     const pokemon = await fetchPokemonById(i);
     if (pokemon) {
       createPokemonCard(pokemon);
+      await delay(600); // Delay para evitar sobrecarga na API
     }
   }
+
+  currentOffset += POKEMON_BATCH_SIZE; // Atualiza o índice para o próximo lote de Pokémon
+  isLoading = false; // Marca que o carregamento foi concluído
+};
+
+const showLoadingIndicator = () => {
+  const loadingIndicator = document.createElement('div');
+  loadingIndicator.id = 'loading-indicator';
+  loadingIndicator.textContent = 'Carregando mais Pokémon...';
+  pokedexContainer.appendChild(loadingIndicator);
+  return loadingIndicator;
+};
+
+const hideLoadingIndicator = (loadingIndicator) => {
+  if (loadingIndicator) {
+    loadingIndicator.remove();
+  }
+};
+
+// Função para detectar o scroll
+const checkScrollPosition = () => {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  if (scrollTop + clientHeight >= scrollHeight - 200 && !isLoading) { // Se estiver a 200px do fim
+    const loadingIndicator = showLoadingIndicator();
+    loadPokemonBatch().then(() => hideLoadingIndicator(loadingIndicator)); // Carregar o próximo lote e esconder o indicador
+  }
+};
+
+const init = () => {
+  loadPokemonBatch(); // Carregar o primeiro lote
+  window.addEventListener('scroll', checkScrollPosition); // Adicionar o evento de scroll
 };
 
 init();
