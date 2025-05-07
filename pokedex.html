@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Landing page para um projeto de pokemon">
+
+  <meta name="author" content="CleberSouza">
+
+  <meta name="keywords" content="Pokemon,landingpage">
+
+  <title>Pokelanding</title>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="icon" type="image/png" href="./assets/img/logo.png">
+
+
+
+
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <a href="index.html"><img src="./assets/img/logo.png" alt="Logo do Pokémon" width="40px" /></a>
+      </div>
+
+      <div class="menu-toggle" id="menu-toggle">
+        &#9776;
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li id="btn-login"><a href="#" class="open-modal" data-target="modal-login">Login</a></li>
+          <li id="btn-cadastro"><a href="#" class="open-modal" data-target="modal-cadastro">Cadastro</a></li>
+          <li id="user-info"></li>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+
+  <section class="hero">
+    <div class="container">
+      <h1>Pokelanding</h1>
+      <p>Descubra o mundo Pokémon</p>
+    </div>
+  </section>
+
+
+  <!-- Fim do Header -->
+  <!-- Main -->
+
+  <section id="pokedex" class="grid-container"></section>
+
+
+  <!--Footer-->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <span>&copy; 2025 Pokédex Interativa</span>
+      </div>
+      <address class="social-links">
+        <a href="https://github.com/SouzaCleber98" target="_blank"><img src="./assets/img/github.png"
+            alt="link do github" width="40px" /></a>
+        <a href="https://www.linkedin.com/in/cleber-souza-62170b270/" target="_blank"><img
+            src="./assets/img/linkdin.png" alt="Link do linkedin" width="40px" /></a>
+      </address>
+    </div>
+  </footer>
+  <!-- Fim do Footer -->
+
+  <!-- Modal -->
+  <!-- Modal de Login -->
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <span class="close" id="fecharModal">&times;</span>
+      <h2>Login</h2>
+      <form>
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Senha" required />
+        <small id="login-msg" class="mensagem"></small>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  </div>
+  <!-- Fim do Modal de Login -->
+  <!-- Modal de Cadastro -->
+  <div id="modal-cadastro" class="modal">
+    <div class="modal-content">
+      <span class="close" id="fecharModal">&times;</span>
+      <h2>Cadastro</h2>
+      <form>
+        <input type="text" placeholder="Nome completo" required />
+        <input type="email" placeholder="Email" required />
+        <small id="email-msg" class="mensagem"></small>
+        <input type="password" placeholder="Senha" required />
+        <input type="text" class="cpf" maxlength="14" placeholder="CPF" required />
+        <small id="cpf-msg" class="mensagem"></small>
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+  </div>
+  <!-- Fim do Modal de Cadastro -->
+  <!-- Fim do Modal -->
+
+
+  <!--Toast-->
+  <div id="toast" class="toast"></div>
+  <!-- Fim do Toast -->
+
+
+
+
+
+  <!-- Scripts JS -->
+
+
+  <script type="module" src="./assets/js/modal.js"></script>
+  <script src="./assets/js/header.js"></script>
+  <script src="./assets/js/cpfMask.js"></script>
+  <script src="./assets/js/cpfValidate.js"></script>
+  <script src="./assets/js/cpfListener.js"></script>
+  <script type="module" src="./assets/js/auth.js"></script>
+  <script src="./assets/js/carousel-auto.js"></script>
+  <script type="module" src="./assets/js/contato.js"></script>
+  <script src="./assets/js/main.js"></script>
+
+
+  <!--Fim Script-->
+
+
+</body>
+
+</html>
