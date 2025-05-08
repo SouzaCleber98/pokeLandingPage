@@ -3,21 +3,6 @@
 ## 📘 Descrição
 PokéLanding é uma landing page interativa voltada para fãs de Pokémon. A página permite que o usuário busque por Pokémon por nome ou número diretamente na Pokédex. Ela possui um banner rotativo com imagens e formulários de busca em cada slide, responsividade para dispositivos móveis e autenticação básica.
 
-## 📁 Estrutura de Diretórios
-```
-.
-├── index.html  
-├── assets/  
-│   ├── img/                 → Imagens dos slides (pikachu.webp, charmander.jpg, etc.)  
-│   └── favicon.ico          → Ícone da aba do navegador  
-├── css/  
-│   └── style.css            → Estilos gerais do projeto  
-├── js/  
-│   ├── carousel-auto.js     → Script para rotação automática do carrossel  
-│   ├── login.js             → Scripts de autenticação  
-│   └── validaCpf.js         → Validação de CPF  
-└── users.json (opcional para testes locais com login)
-```
 
 ## 🎨 Funcionalidades
 - Carrossel (banner) com troca automática a cada 5 segundos
@@ -26,7 +11,7 @@ PokéLanding é uma landing page interativa voltada para fãs de Pokémon. A pá
 - Responsividade para telas pequenas (mobile)
 - Feedback visual de sucesso/erro nos campos
 - Validação de CPF no formulário de cadastro
-- Login e cadastro com base local (via JSON temporário)
+- Login e cadastro com base local (via localStorage)
 - Favicon personalizado
 
 ## 🔧 Como usar
@@ -54,9 +39,10 @@ git clone https://github.com/SouzaCleber98/pokeLandingPage.git
 
 ## ✨ Futuras melhorias (sugestão)
 - Conectar a API oficial da Pokédex (PokéAPI)
-- Armazenamento real de usuários via Firebase ou banco de dados
+- Armazenamento real de usuários e mensagens do contatos via Firebase ou banco de dados
 - Melhor acessibilidade (teclado, leitores de tela)
 - Animações entre os slides ou feedbacks visuais mais ricos
+- Mudança e personalização de temas, e modo escuro.
 
 ## 📌 Observações
 - O projeto é acadêmico/experimental
