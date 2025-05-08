@@ -68,6 +68,9 @@ const createPokemonCard = (pokemon) => {
   cardFront.classList.add('card', 'card-front');
   cardFront.style.background = bgColor;
   cardFront.innerHTML = `
+    <div class="pokeball-bg">
+      <img src="assets/img/Icons/default/pokeball.svg" alt="Pokeball">
+    </div>
     <div class="card-image">
       <img src="" alt="${pokemon.name}" data-image-status="loading" data-image-type="front">
     </div>
@@ -79,7 +82,7 @@ const createPokemonCard = (pokemon) => {
     </div>
     <div class="card-type">
       ${pokemon.types.map(t => `
-        <img src="assets/img/Icons/${t.type.name}.svg" alt="${t.type.name}" class="type-icon">
+        <img src="assets/img/Icons/${t.type.name}.svg" alt="${t.type.name}" class="type-icon type-${t.type.name}">
       `).join('')}
     </div>
   `;
@@ -88,6 +91,9 @@ const createPokemonCard = (pokemon) => {
   cardBack.classList.add('card', 'card-back');
   cardBack.style.background = bgColor;
   cardBack.innerHTML = `
+    <div class="pokeball-bg">
+      <img src="assets/img/Icons/default/pokeball.svg" alt="Pokeball">
+    </div>
     <div class="card-image">
       <img src="" alt="${pokemon.name} back" data-image-status="loading" data-image-type="back">
     </div>
@@ -102,13 +108,10 @@ const createPokemonCard = (pokemon) => {
   cardWrapper.appendChild(cardInner);
   pokedexContainer.appendChild(cardWrapper);
 
-  cardWrapper.addEventListener('click', () => {
-    cardWrapper.classList.toggle('flipped');
-  });
 
   // Imagens
-  loadPokemonImage(pokemon.id, 'front', pokemon.sprites.other?.showdown?.front_default || pokemon.sprites.front_default, cardFront.querySelector('img'));
-  loadPokemonImage(pokemon.id, 'back', pokemon.sprites.other?.showdown?.back_default || pokemon.sprites.back_default, cardBack.querySelector('img'));
+  loadPokemonImage(pokemon.id, 'front', pokemon.sprites.other?.showdown?.front_default || pokemon.sprites.front_default, cardFront.querySelector('.card-image img'));
+  loadPokemonImage(pokemon.id, 'back', pokemon.sprites.other?.showdown?.back_default || pokemon.sprites.back_default, cardBack.querySelector('.card-image img'));
 };
 
 const loadPokemonImage = async (id, side, imageUrl, imgElement) => {
