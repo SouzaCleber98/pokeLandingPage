@@ -161,3 +161,54 @@
   color: #333;
   line-height: 1.6;
 }
+
+
+/* Selecionar região seletores e botões */
+.region-selector select {
+  display: none;
+}
+
+.region-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.region-selector button.active {
+  background-color: var(--type-fire);
+  font-weight: bold;
+}
+
+.region-selector select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #888;
+  background-color: #f5f5f5;
+  color: #333;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns="http://www.w3.org/2000/svg"%20viewBox="0%200%204%205"><path%20fill="gray"%20d="M2%200L0%202h4z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.region-selector select:focus {
+  border-color: #4A90E2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+  outline: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .region-selector select {
+    display: block;
+  }
+
+  .region-selector button {
+    display: none;
+  }
+}

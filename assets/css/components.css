@@ -48,3 +48,20 @@
   opacity: 1;
   bottom: 50px;
 }
+
+/* Botões*/
+
+.btnyellow {
+  background-color: var(--type-electric);
+  color: #000;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btnyellow:hover {
+  background-color: var(--type-ground);
+  cursor: pointer;
+}

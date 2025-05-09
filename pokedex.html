@@ -59,9 +59,39 @@
 
   <!-- Fim do Header -->
   <!-- Main -->
+  <main>
+    <div class="region-selector">
 
-  <section id="pokedex" class="grid-container"></section>
+      <!-- Mobile -->
+      <select class="region-selector-control">
+        <option value="kanto">Kanto</option>
+        <option value="johto">Johto</option>
+        <option value="hoenn">Hoenn</option>
+        <option value="sinnoh">Sinnoh</option>
+        <option value="unova">Unova</option>
+        <option value="kalos">Kalos</option>
+        <option value="alola">Alola</option>
+        <option value="galar">Galar</option>
+        <option value="hisui">Hisui</option>
+        <option value="paldea">Paldea</option>
+      </select>
+      <!-- Desktop -->
+      <div class="region-selector-control">
+        <button class="btnyellow active" data-region="kanto">Kanto</button>
+        <button class="btnyellow" data-region="johto">Johto</button>
+        <button class="btnyellow" data-region="hoenn">Hoenn</button>
+        <button class="btnyellow" data-region="sinnoh">Sinnoh</button>
+        <button class="btnyellow" data-region="unova">Unova</button>
+        <button class="btnyellow" data-region="kalos">Kalos</button>
+        <button class="btnyellow" data-region="alola">Alola</button>
+        <button class="btnyellow" data-region="galar">Galar</button>
+        <button class="btnyellow" data-region="hisui">Hisui</button>
+        <button class="btnyellow" data-region="paldea">Paldea</button>
+      </div>
+    </div>
 
+    <section id="pokedex" class="grid-container"></section>
+  </main>
 
   <!--Footer-->
   <footer class="footer">
