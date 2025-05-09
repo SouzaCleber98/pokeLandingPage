@@ -53,16 +53,3 @@
   margin-top: 60px;
 }
 
-.btn-comecar {
-  background-color: #ffc107;
-  color: #000;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.btn-comecar:hover {
-  background-color: #e0a800;
-}

@@ -22,9 +22,9 @@
   --type-bug: #A6B91A;
   --type-rock: #B6A136;
   --type-ghost: #735797;
-  --type-dragon: #6F35FC;
+  --type-dragon: #5a1ef1;
   --type-dark: #705746;
-  --type-steel: #B7B7CE;
+  --type-steel: #afafb9;
   --type-fairy: #D685AD;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .type-ghost {
-  background-color: #705898;
+  background-color: #624a8a;
 }
 
 .type-steel {
