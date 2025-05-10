@@ -21,6 +21,25 @@ const regions = {
   paldea:{ start: 906, end: 1025 },
 };
 
+function search_pokemon() {
+  const input = document.getElementById("searchbar").value.toLowerCase().replace(/\s+/g, "");
+  const cards = document.getElementsByClassName("card-wrapper");
+
+  if (!input) {
+    Array.from(cards).forEach(card => card.style.display = 'block');
+    return;
+  }
+
+  Array.from(cards).forEach(card => {
+    const name = card.querySelector(".card-name h3")?.innerText.toLowerCase().replace(/\s+/g, "") || "";
+    const id = card.querySelector(".card-id span")?.innerText.replace("#", "") || "";
+    const match = name.includes(input) || id.includes(input);
+    card.style.display = match ? "block" : "none";
+  });
+}
+
+
+
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
 async function fetchWithRetry(url, retries = 3, delayTime = 1500) {
@@ -121,40 +140,44 @@ function createPokemonCard(pokemon) {
 }
 
 // dispara o próximo lote
-async function loadNextBatch() {
+const loadNextBatch = () => {
   if (isLoading || currentOffset > maxPokemon) return;
   isLoading = true;
   const token = currentLoadToken;
-  const start = currentOffset;
-  const end   = Math.min(start + POKEMON_BATCH_SIZE, maxPokemon + 1);
+  const batchStart = currentOffset;
+  const batchEnd = Math.min(batchStart + POKEMON_BATCH_SIZE, maxPokemon + 1);
 
-  try {
-    for (let id = start; id < end; id++) {
-      if (token !== currentLoadToken) break;
+  console.log("Iniciando lote:", batchStart, "->", batchEnd - 1);
+
+  (async () => {
+    for (let id = batchStart; id < batchEnd; id++) {
+      if (token !== currentLoadToken) {
+        console.warn("Cancelado por nova região");
+        break;
+      }
       const p = await fetchPokemonById(id);
       if (p) createPokemonCard(p);
-      await delay(200);
     }
-  } catch (e) {
-    console.error(e);
-  } finally {
-    // Só atualiza offset se não houver troca de região
-    if (token === currentLoadToken) {
-      currentOffset = end;
-    }
-    isLoading = false;
+  })()
+    .catch(console.error)
+    .finally(() => {
+      if (token === currentLoadToken) {
+        currentOffset = batchEnd;
+        console.log("Offset atualizado para", currentOffset);
+      }
+      isLoading = false;
 
-    // **NOVO**: se ainda estivermos no fim do scroll, dispara novamente
-    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-    if (
-      scrollTop + clientHeight >= scrollHeight - 200 &&
-      currentOffset <= maxPokemon
-    ) {
-      // chama de novo para continuar carregando enquanto estivermos no fim
-      loadNextBatch();
-    }
-  }
-}
+      // 🚨 Verifica se ainda precisa carregar mais (ex: usuário já estava no final)
+      requestAnimationFrame(() => {
+        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+        if (scrollTop + clientHeight >= scrollHeight - 200) {
+          console.log("Scroll ainda está no final, carregando mais...");
+          loadNextBatch();
+        }
+      });
+    });
+};
+
 
 
 function checkScrollPosition() {
