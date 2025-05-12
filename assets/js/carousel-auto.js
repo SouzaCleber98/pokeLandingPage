@@ -65,3 +65,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startAutoScroll();
 });
+// carousel-auto.js
+  document.addEventListener("DOMContentLoaded", function () {
+    const inputs = document.querySelectorAll(".search-input"); // Seleciona todos os inputs de pesquisa
+    const forms = document.querySelectorAll(".search-form"); // Seleciona todos os formulários de pesquisa
+
+    // Sincroniza os valores entre todos os inputs
+    inputs.forEach((input) => {
+      input.addEventListener("input", (e) => {
+        const value = e.target.value;
+        inputs.forEach((otherInput) => {
+          if (otherInput !== e.target) {
+            otherInput.value = value;
+          }
+        });
+      });
+    });
+
+    // Lida com o envio dos formulários
+    forms.forEach((form) => {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault(); // Impede o envio padrão
+        const searchValue = form.querySelector(".search-input").value.trim();
+        if (searchValue !== "") {
+          window.location.href = `pokedex.html?search=${encodeURIComponent(searchValue)}`;
+        }
+      });
+    });
+  });
+
