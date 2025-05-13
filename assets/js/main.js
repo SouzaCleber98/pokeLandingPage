@@ -285,6 +285,7 @@ function init() {
   // listeners do seletor
   const selector = document.querySelector('.region-selector');
   selector.addEventListener('change', e => {
+    if (isLoading || isSearching) return;
     if (e.target.tagName === 'SELECT') loadRegion(e.target.value);
   });
   selector.addEventListener('click', e => {
