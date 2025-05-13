@@ -261,7 +261,7 @@ function loadRegion(region) {
   isLoading = false;
   currentLoadToken = Symbol();
   loadNextBatch();
-  setTimeout(() => disableRegionControls(false), 2000);
+  setTimeout(() => disableRegionControls(false), 500);
 }
 
 function init() {
@@ -289,6 +289,7 @@ function init() {
   });
   selector.addEventListener('click', e => {
     if (e.target.matches('button[data-region]')) {
+      if (isLoading || isSearching) return;
       document
         .querySelectorAll('.region-selector button')
         .forEach(b => b.classList.remove('active'));
