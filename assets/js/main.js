@@ -55,6 +55,7 @@ async function search_pokemon() {
     pokedexContainer.innerHTML = ''; // Limpa Pokédex
     console.log("passei no input vazio");
     isSearching = false;
+    isLoading = false;
     pokedexContainer.innerHTML = ''; // Limpa Pokédex
     await delay(2000);
     init(); // Volta pro estado inicial da Pokédex
@@ -93,10 +94,14 @@ async function search_pokemon() {
   // Limpa a Pokédex após a busca
   console.log("cheguei no final");
 
-if (input) return; // Impedir que a função continue se o input não estiver vazio
+if (input){
+  console.log("ainda pesquisando");
+  return
+}; // Impedir que a função continue se o input não estiver vazio
 
   isLoading = false;
   isSearching = false;
+  console.log("Voltou pro estado inicial");
 }
 
 
