@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = document.querySelectorAll(".carousel__navigation-button");
   const nextLinks = document.querySelectorAll(".carousel__next");
   const prevLinks = document.querySelectorAll(".carousel__prev");
+  const searchInput = document.querySelectorAll(".search-input");
   let currentIndex = 0;
   let autoScrollInterval;
 
@@ -15,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = (index + slides.length) % slides.length;
     const offset = slides[currentIndex].offsetLeft;
     viewport.scrollTo({ left: offset, behavior: "smooth" });
+    searchInput[currentIndex].focus();
   };
 
   const getIndexFromHref = (href) => {
