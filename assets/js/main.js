@@ -92,6 +92,9 @@ async function search_pokemon() {
   }
   // Limpa a Pokédex após a busca
   console.log("cheguei no final");
+
+if (input) return; // Impedir que a função continue se o input não estiver vazio
+
   isLoading = false;
   isSearching = false;
 }
