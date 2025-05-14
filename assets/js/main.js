@@ -198,6 +198,10 @@ function createPokemonCard(pokemon) {
     .then(url => frontImg.src = url).catch(() => { });
   tryLoadImage(pokemon.sprites.other.showdown.back_default || pokemon.sprites.back_default)
     .then(url => backImg.src = url).catch(() => { });
+  wrapper.addEventListener("click", () => {
+    window.open(`details.html?id=${pokemon.id}`, "_self");
+  });
+
 }
 
 // dispara o próximo lote
@@ -300,4 +304,8 @@ function init() {
   });
 }
 
+
+
+// Inicializa a Pokédex
 init();
+
