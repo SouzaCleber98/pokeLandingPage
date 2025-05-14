@@ -246,7 +246,7 @@ const displayPokemonDetails = async (pokemon) => {
         // console.log(res);
 
         let weakTypes=[res.damage_relations.no_damage_to.map((type)=>{
-          return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
+          return `<img src="./assets/img/Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
         })]
 
         // var weakTypesString='';
@@ -255,7 +255,7 @@ const displayPokemonDetails = async (pokemon) => {
         }
         
         let strongTypes=[res.damage_relations.double_damage_to.map((type)=>{
-          return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
+          return `<img src="./assets/img/Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
         })]
         
         // var strongTypesString='';
