@@ -47,6 +47,15 @@ git clone https://github.com/SouzaCleber98/pokeLandingPage.git
 - Animações entre os slides ou feedbacks visuais mais ricos
 - Mudança e personalização de temas, e modo escuro.
 
+## 📝 Créditos
+
+Durante o desenvolvimento deste projeto, foram utilizados, de forma temporária, elementos de design e trechos de código de outra fonte, com os devidos créditos:
+
+- [lazyjinchuriki](https://github.com/lazyjinchuriki/pokedex): Utilizado o design das cartas e, temporariamente, os arquivos `details.html`, `script2.js` e `style2.css` para exibir os detalhes dos Pokémon.
+
+Agradecimentos à comunidade open source por compartilhar soluções que ajudaram no desenvolvimento deste projeto.
+
+
 ## 📌 Observações
 - O projeto é acadêmico/experimental
 - Para funcionar a autenticação e validação local, é necessário rodar localmente com um pequeno servidor (ex: Live Server no VSCode)
