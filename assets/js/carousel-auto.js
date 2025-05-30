@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = (index + slides.length) % slides.length;
     const offset = slides[currentIndex].offsetLeft;
     viewport.scrollTo({ left: offset, behavior: "smooth" });
-    searchInput[currentIndex].focus();
+    searchInput[currentIndex].focus({ preventScroll: true });
   };
 
   const getIndexFromHref = (href) => {

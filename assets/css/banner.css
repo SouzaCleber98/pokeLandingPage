@@ -2,7 +2,6 @@
   position: relative;
   width: 100%;
   min-height: 500px;
-  overflow: hidden;
 }
 
 .carousel__viewport {
@@ -12,11 +11,9 @@
   bottom: 0;
   left: 0;
   display: flex;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  overflow: hidden;
   counter-reset: item;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;  
 }
 
 .carousel__slide {
