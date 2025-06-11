@@ -1,3 +1,5 @@
+import state from "./modal.js";
+
 // carousel-auto.js
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -16,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     currentIndex = (index + slides.length) % slides.length;
     const offset = slides[currentIndex].offsetLeft;
     viewport.scrollTo({ left: offset, behavior: "smooth" });
+    if (state.isOpen) return;
     searchInput[currentIndex].focus({ preventScroll: true });
   };
 
@@ -67,10 +70,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   startAutoScroll();
 
-// Para evitar o auto-scroll quando o usuário digita no campo de pesquisa
-document.querySelector('.search-input')
-  .addEventListener('keydown', resetAutoScroll);
-
+  // Para evitar o auto-scroll quando o usuário digita no campo de pesquisa
+  document.querySelectorAll('.search-input')
+    .forEach(input => {
+      input.addEventListener('keydown', resetAutoScroll);
+    });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
