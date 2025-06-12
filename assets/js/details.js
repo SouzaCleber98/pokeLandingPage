@@ -24,7 +24,7 @@ const colors = {
 };
 const main_types = Object.keys(colors);
 
-const getType_data = async(url)=>{
+const getType_data = async (url) => {
   let res = await fetch(url);
   let data = await res.json();
   return data;
@@ -36,23 +36,23 @@ const fetchPokemonDetails = async () => {
   const url2 = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
   //changing the api so that the query is pokemon specific
   // const url3 = `https://pokeapi.co/api/v2/type/${id}/`; 
- 
+
   const res = await fetch(url);
   const res2 = await fetch(url2);
-  
+
   const data = await res.json();
   const data2 = await res2.json();
-  
-  
+
+
   // get the type of pokemon
-  let type_names = data.types.map((val, index)=>val.type.name)
+  let type_names = data.types.map((val, index) => val.type.name)
   // console.log(data.types);
-  let data3 = type_names.map( async (val) => {
+  let data3 = type_names.map(async (val) => {
     return await getType_data(`https://pokeapi.co/api/v2/type/${val}/`)
   })
-  
+
   // console.log(type_names);
-  
+
   const arr = [data, data2, data3];
   await displayPokemonDetails(arr);
   // console.log(arr);
@@ -155,51 +155,51 @@ const displayPokemonDetails = async (pokemon) => {
   };
 
   const displayEvolutionRecursive = (chain, container) => {
-    try{
+    try {
 
-    const pokemonName = chain.species.name;
-    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${getPokemonIdFromURL(
-      chain.species.url
-    )}.png`;
+      const pokemonName = chain.species.name;
+      const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${getPokemonIdFromURL(
+        chain.species.url
+      )}.png`;
 
-    const EvolutionId = getPokemonIdFromURL(chain.species.url);
+      const EvolutionId = getPokemonIdFromURL(chain.species.url);
 
-    const pokemonDiv = document.createElement("div");
-    pokemonDiv.classList.add("evolution__pokemon");
-    const iconDiv = document.createElement("div");
+      const pokemonDiv = document.createElement("div");
+      pokemonDiv.classList.add("evolution__pokemon");
+      const iconDiv = document.createElement("div");
 
-    const nameElement = document.createElement("h1");
-    nameElement.textContent = pokemonName;
-    pokemonDiv.appendChild(nameElement);
+      const nameElement = document.createElement("h1");
+      nameElement.textContent = pokemonName;
+      pokemonDiv.appendChild(nameElement);
 
-    const imageElement = document.createElement("img");
-    imageElement.src = imgUrl;
-    pokemonDiv.appendChild(imageElement);
-    imageElement.addEventListener("click", () => {
-      window.location.href = `details.html?id=${EvolutionId}}`;
-    });
+      const imageElement = document.createElement("img");
+      imageElement.src = imgUrl;
+      pokemonDiv.appendChild(imageElement);
+      imageElement.addEventListener("click", () => {
+        window.location.href = `details.html?id=${EvolutionId}}`;
+      });
 
-    if (chain.evolves_to.length > 0) {
-      const arrowIndicator = document.createElement("i");
-      arrowIndicator.classList.add(
-        "fa-solid",
-        "fa-caret-right",
-        "fa-2x",
-        "fa-beat"
-      );
-      iconDiv.appendChild(arrowIndicator);
+      if (chain.evolves_to.length > 0) {
+        const arrowIndicator = document.createElement("i");
+        arrowIndicator.classList.add(
+          "fa-solid",
+          "fa-caret-right",
+          "fa-2x",
+          "fa-beat"
+        );
+        iconDiv.appendChild(arrowIndicator);
+      }
+
+      container.appendChild(pokemonDiv);
+      container.appendChild(iconDiv);
+
+      if (chain.evolves_to.length > 0) {
+        const evolutionData = chain.evolves_to[0];
+        displayEvolutionRecursive(evolutionData, container);
+      }
+
     }
-
-    container.appendChild(pokemonDiv);
-    container.appendChild(iconDiv);
-
-    if (chain.evolves_to.length > 0) {
-      const evolutionData = chain.evolves_to[0];
-      displayEvolutionRecursive(evolutionData, container);
-    }
-
-    }
-    catch(err){
+    catch (err) {
       console.log(err);
     }
 
@@ -211,34 +211,34 @@ const displayPokemonDetails = async (pokemon) => {
   }
   displayEvolutionChain(evolutionChainData);
 
-  if(pokemon[2] != null){
+  if (pokemon[2] != null) {
 
-    var weakTypesString='';
-    var strongTypesString='';
-    
-    pokemon[2].map(async (val)=>{
+    var weakTypesString = '';
+    var strongTypesString = '';
 
-      val.then((res)=>{
+    pokemon[2].map(async (val) => {
+
+      val.then((res) => {
         // console.log(res);
 
-        let weakTypes=[res.damage_relations.no_damage_to.map((type)=>{
+        let weakTypes = [res.damage_relations.no_damage_to.map((type) => {
           return `<img src="../assets/img/Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
         })]
 
         // var weakTypesString='';
-        for(let i in weakTypes){
+        for (let i in weakTypes) {
           weakTypesString += weakTypes[i];
         }
-        
-        let strongTypes=[res.damage_relations.double_damage_to.map((type)=>{
+
+        let strongTypes = [res.damage_relations.double_damage_to.map((type) => {
           return `<img src="../assets/img/Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
         })]
-        
+
         // var strongTypesString='';
-        for(let i in strongTypes){
+        for (let i in strongTypes) {
           strongTypesString += strongTypes[i];
         }
-    
+
         let tab2 = document.getElementById("tab_2");
         tab2.innerHTML = `
         <div class="stats">
@@ -344,7 +344,7 @@ const displayPokemonDetails = async (pokemon) => {
             </div>
             
               <div class="statIconHolder">
-                ${weakTypesString==""?'None':weakTypesString}
+                ${weakTypesString == "" ? 'None' : weakTypesString}
                 
             </div> 
           </div>
@@ -356,20 +356,20 @@ const displayPokemonDetails = async (pokemon) => {
             </div>
           
             <div class="statIconHolder">
-            ${strongTypesString==""?'None':strongTypesString}
+            ${strongTypesString == "" ? 'None' : strongTypesString}
           </div>
           </div>
         `;
 
       })
-      
+
     })
 
 
 
 
   }
-  else{
+  else {
     console.log(pokemon[2])
   }
 
@@ -389,12 +389,10 @@ const displayPokemonDetails = async (pokemon) => {
         </div>
         <div class="top">
         <div class="image">
-        <img class="imgFront" src="${
-          imageSrc == null ? imageSrc2 : imageSrc
-        }" alt="${name}">
-        <img class="imgBack" src="../assets/img/Icons/default/pokeball.svg" alt="pokeball">
+        <img class="imgFront" src="${imageSrc == null ? imageSrc2 : imageSrc
+    }" alt="${name}">
+        <img class="imgBack" src="../assets/img/icons/default/pokeball.svg" alt="pokeball">
         </div>
-
         </div>
 
   `;
@@ -451,14 +449,14 @@ const displayPokemonDetails = async (pokemon) => {
 
   <div class="types">
   ${poke_types
-    .map(
-      (type) => `
+      .map(
+        (type) => `
     <div class="poke__type__bg ${type}">
       <img src="../assets/img/Icons/${type}.svg" alt="Type">
     </div>
   `
-    )
-    .join("")}
+      )
+      .join("")}
   </div>
   </div>
 
@@ -467,11 +465,10 @@ const displayPokemonDetails = async (pokemon) => {
   <div>Gender: <b><i class="fa-solid fa-mars" style="color: #1f71ff;"></i>${male}  <i class="fa-solid fa-venus" style="color: #ff5c74;"></i>${female}</b></div>
   <span>Abilities: <b>${abilities.join(", ")}</b></span>
   <span>Catch Rate: <b>${catchRate} (${((catchRate / 255) * 100).toFixed(
-    2
-  )}% chance)</b></span>
-  <span>Base Friendship: <b>${friendship} (${
-    friendship < 50 ? "lower" : friendship < 100 ? "normal" : "higher"
-  })</b></span>
+        2
+      )}% chance)</b></span>
+  <span>Base Friendship: <b>${friendship} (${friendship < 50 ? "lower" : friendship < 100 ? "normal" : "higher"
+    })</b></span>
   <span>Base Exp: <b>${pokemon[0].base_experience}</b></span>
   <span>Growth Rate: <b>${pokemon[1].growth_rate.name}</b></span>
   <span>Egg Groups: <b>${eggGroups.join(", ")}</b></span>
