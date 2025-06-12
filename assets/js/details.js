@@ -1,7 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id"));
 
-// console.log(id);
 const colors = {
   fire: "#e03a3a",
   grass: "#50C878",
@@ -24,38 +23,30 @@ const colors = {
 };
 const main_types = Object.keys(colors);
 
-const getType_data = async(url)=>{
+const getType_data = async (url) => {
   let res = await fetch(url);
   let data = await res.json();
   return data;
 }
 const fetchPokemonDetails = async () => {
 
-
   const url = `https://pokeapi.co/api/v2/pokemon/${id}/`;
   const url2 = `https://pokeapi.co/api/v2/pokemon-species/${id}/`;
-  //changing the api so that the query is pokemon specific
-  // const url3 = `https://pokeapi.co/api/v2/type/${id}/`; 
- 
+
   const res = await fetch(url);
   const res2 = await fetch(url2);
-  
+
   const data = await res.json();
   const data2 = await res2.json();
-  
-  
+
   // get the type of pokemon
-  let type_names = data.types.map((val, index)=>val.type.name)
-  // console.log(data.types);
-  let data3 = type_names.map( async (val) => {
-    return await getType_data(`https://pokeapi.co/api/v2/type/${val}/`)
+  let type_names = data.types.map((val) => val.type.name);
+  let data3 = type_names.map(async (val) => {
+    return await getType_data(`https://pokeapi.co/api/v2/type/${val}/`);
   })
-  
-  // console.log(type_names);
-  
+
   const arr = [data, data2, data3];
   await displayPokemonDetails(arr);
-  // console.log(arr);
 };
 
 const displayPokemonDetails = async (pokemon) => {
@@ -70,56 +61,40 @@ const displayPokemonDetails = async (pokemon) => {
   const color = colors[type];
 
   const hp = pokemon[0].stats[0].base_stat;
-  // const maxHp = hp * 2 + 204;
-  // const minHp = hp * 2 + 110;
   const attack = pokemon[0].stats[1].base_stat;
-  // const maxAttack = Math.floor((attack * 2 + 99) * 1.1);
-  // const minAttack = Math.floor((attack * 2 + 5) * 0.9);
   const spAttack = Math.floor(pokemon[0].stats[3].base_stat);
-  // const maxSpAttack = Math.floor((spAttack * 2 + 99) * 1.1);
-  // const minSpAttack = Math.floor((spAttack * 2 + 5) * 0.9);
   const spDefense = Math.floor(pokemon[0].stats[4].base_stat);
-  // const maxSpDefense = Math.floor((spDefense * 2 + 99) * 1.1);
-  // const minSpDefense = Math.floor((spDefense * 2 + 5) * 0.9);
   const defense = pokemon[0].stats[2].base_stat;
-  // const maxDefense = Math.floor((defense * 2 + 99) * 1.1);
-  // const minDefense = Math.floor((defense * 2 + 5) * 0.9);
   const speed = pokemon[0].stats[5].base_stat;
-  // const maxSpeed = Math.floor((speed * 2 + 99) * 1.1);
-  // const minSpeed = Math.floor((speed * 2 + 5) * 0.9);
 
   const abilities = pokemon[0].abilities.map((ability) => ability.ability.name);
   const eggGroups = pokemon[1].egg_groups.map((group) => group.name);
-  // const moves = pokemon[0].moves.map((move) => move.move.name);
   document.body.style.backgroundColor = color;
   const evolutionChainUrl = pokemon[1].evolution_chain.url;
   const resEvolutionChain = await fetch(evolutionChainUrl);
   const evolutionChainData = await resEvolutionChain.json();
-  // console.log(evolutionChainData);
 
   const varieties = pokemon[1].varieties
     .map((variety) => {
       if (variety.is_default === true) {
-        return null; // or return undefined;
+        return null;
       }
       return variety.pokemon;
     })
-    .filter((item) => item !== null); // Remove null items from the array
-  // console.log(varieties);
+    .filter((item) => item !== null);
   const resVarieties = await Promise.all(
     varieties.map((variety) => fetch(variety.url))
   );
   const varietiesData = await Promise.all(
     resVarieties.map((res) => res.json())
   );
-  // console.log(varietiesData);
 
   let tab3 = document.getElementById("tab_3");
   tab3.innerHTML = `
-  <div class="evolution">
-  </div>
-  <div class="varieties">
-  </div>
+    <div class="evolution">
+    </div>
+    <div class="varieties">
+    </div>
   `;
 
   const displayVarieties = (varietiesData) => {
@@ -155,54 +130,51 @@ const displayPokemonDetails = async (pokemon) => {
   };
 
   const displayEvolutionRecursive = (chain, container) => {
-    try{
+    try {
+      const pokemonName = chain.species.name;
+      const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${getPokemonIdFromURL(
+        chain.species.url
+      )}.png`;
 
-    const pokemonName = chain.species.name;
-    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${getPokemonIdFromURL(
-      chain.species.url
-    )}.png`;
+      const EvolutionId = getPokemonIdFromURL(chain.species.url);
 
-    const EvolutionId = getPokemonIdFromURL(chain.species.url);
+      const pokemonDiv = document.createElement("div");
+      pokemonDiv.classList.add("evolution__pokemon");
+      const iconDiv = document.createElement("div");
 
-    const pokemonDiv = document.createElement("div");
-    pokemonDiv.classList.add("evolution__pokemon");
-    const iconDiv = document.createElement("div");
+      const nameElement = document.createElement("h1");
+      nameElement.textContent = pokemonName;
+      pokemonDiv.appendChild(nameElement);
 
-    const nameElement = document.createElement("h1");
-    nameElement.textContent = pokemonName;
-    pokemonDiv.appendChild(nameElement);
+      const imageElement = document.createElement("img");
+      imageElement.src = imgUrl;
+      pokemonDiv.appendChild(imageElement);
+      imageElement.addEventListener("click", () => {
+        window.location.href = `details.html?id=${EvolutionId}`;
+      });
 
-    const imageElement = document.createElement("img");
-    imageElement.src = imgUrl;
-    pokemonDiv.appendChild(imageElement);
-    imageElement.addEventListener("click", () => {
-      window.location.href = `details.html?id=${EvolutionId}}`;
-    });
+      if (chain.evolves_to.length > 0) {
+        const arrowIndicator = document.createElement("i");
+        arrowIndicator.classList.add(
+          "fa-solid",
+          "fa-caret-right",
+          "fa-2x",
+          "fa-beat"
+        );
+        iconDiv.appendChild(arrowIndicator);
+      }
 
-    if (chain.evolves_to.length > 0) {
-      const arrowIndicator = document.createElement("i");
-      arrowIndicator.classList.add(
-        "fa-solid",
-        "fa-caret-right",
-        "fa-2x",
-        "fa-beat"
-      );
-      iconDiv.appendChild(arrowIndicator);
+      container.appendChild(pokemonDiv);
+      container.appendChild(iconDiv);
+
+      if (chain.evolves_to.length > 0) {
+        const evolutionData = chain.evolves_to[0];
+        displayEvolutionRecursive(evolutionData, container);
+      }
     }
-
-    container.appendChild(pokemonDiv);
-    container.appendChild(iconDiv);
-
-    if (chain.evolves_to.length > 0) {
-      const evolutionData = chain.evolves_to[0];
-      displayEvolutionRecursive(evolutionData, container);
-    }
-
-    }
-    catch(err){
+    catch (err) {
       console.log(err);
     }
-
   };
 
   function getPokemonIdFromURL(url) {
@@ -211,141 +183,120 @@ const displayPokemonDetails = async (pokemon) => {
   }
   displayEvolutionChain(evolutionChainData);
 
-  if(pokemon[2] != null){
+  if (pokemon[2] != null) {
 
-    var weakTypesString='';
-    var strongTypesString='';
-    
-    pokemon[2].map(async (val)=>{
+    let weakTypesString = '';
+    let strongTypesString = '';
 
-      val.then((res)=>{
-        // console.log(res);
+    pokemon[2].map(async (val) => {
 
-        let weakTypes=[res.damage_relations.no_damage_to.map((type)=>{
-          return `<img src="../assets/img/Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
-        })]
+      val.then((res) => {
 
-        // var weakTypesString='';
-        for(let i in weakTypes){
-          weakTypesString += weakTypes[i];
-        }
-        
-        let strongTypes=[res.damage_relations.double_damage_to.map((type)=>{
-          return `<img src="../assets/img/Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
-        })]
-        
-        // var strongTypesString='';
-        for(let i in strongTypes){
-          strongTypesString += strongTypes[i];
-        }
-    
+        let weakTypes = res.damage_relations.no_damage_to.map((type) => {
+          return `<img src="assets/img/icons/${type.name}.svg" alt="${type.name}" class="${type.name} poke_type_bg">`
+        });
+
+        weakTypes.forEach((item) => {
+          weakTypesString += item;
+        });
+
+        let strongTypes = res.damage_relations.double_damage_to.map((type) => {
+          return `<img src="assets/img/icons/${type.name}.svg" alt="${type.name}" class="${type.name} poke_type_bg">`
+        });
+
+        strongTypes.forEach((item) => {
+          strongTypesString += item;
+        });
+
         let tab2 = document.getElementById("tab_2");
         tab2.innerHTML = `
         <div class="stats">
-        <div class="stat">
-        <div>
-        <span> Health:</span>
-        <span>${hp}</span>
-        </div>
-          <meter id="hp"
-          style="content: 'HP';"
-            min="0" max="255"
-            low="70" high="120" optimum="150"
-            value="${hp}">
-        </meter>
-        </div>
-      
-      
           <div class="stat">
-          <div>
-        <span> Attack:</span>
-        <span>${attack}</span>
-        </div>
-          <meter id="attack"
+            <div>
+              <span> Health:</span>
+              <span>${hp}</span>
+            </div>
+            <meter id="hp"
+              style="content: 'HP';"
+              min="0" max="255"
+              low="70" high="120" optimum="150"
+              value="${hp}">
+            </meter>
+          </div>
+          <div class="stat">
+            <div>
+              <span> Attack:</span>
+              <span>${attack}</span>
+            </div>
+            <meter id="attack"
               min="0" max="255"
               low="70" high="120" optimum="150"
               value="${attack}">
-        </meter>
-        </div>
-      
-      
-      
+            </meter>
+          </div>
           <div class="stat">
-          <div>
-        <span> Defense:</span>
-        <span>${defense}</span>
-        </div>
-          <meter id="defense"
+            <div>
+              <span> Defense:</span>
+              <span>${defense}</span>
+            </div>
+            <meter id="defense"
               min="0" max="255"
               low="70" high="120" optimum="150"
               value="${defense}">
-        </meter>
-        </div>
-      
-      
-      
-            <div class="stat">
-          <div>
-        <span> Sp. Atk:</span>
-        <span>${spAttack}</span>
-        </div>
-          <meter id="spattack"
+            </meter>
+          </div>
+          <div class="stat">
+            <div>
+              <span> Sp. Atk:</span>
+              <span>${spAttack}</span>
+            </div>
+            <meter id="spattack"
               min="0" max="255"
               low="70" high="120" optimum="150"
               value="${spAttack}">
-        </meter>
-        </div>
-      
-      
-            <div class="stat">
-          <div>
-        <span> Sp. Def:</span>
-        <span>${spDefense}</span>
-        </div>
-          <meter id="spdefense"
+            </meter>
+          </div>
+          <div class="stat">
+            <div>
+              <span> Sp. Def:</span>
+              <span>${spDefense}</span>
+            </div>
+            <meter id="spdefense"
               min="0" max="255"
               low="70" high="120" optimum="150"
               value="${spDefense}">
-        </meter>
-        </div>
-      
-      
-      
+            </meter>
+          </div>
           <div class="stat">
-          <div>
-        <span>Speed:</span>
-        <span>${speed}</span>
-        </div>
-          <meter id="speed"
+            <div>
+              <span>Speed:</span>
+              <span>${speed}</span>
+            </div>
+            <meter id="speed"
               min="0" max="255"
               low="70" high="120" optimum="150"
               value="${speed}">
-        </meter>
-        </div>
-      
-                                  
-            <div class="stat">
+            </meter>
+          </div>
+          <div class="stat">
             <div>
-        <span> Total:</span>
-        <span>${speed + hp + attack + defense + spAttack + spDefense}</span>
-        </div>
-          <meter id="total"
+              <span> Total:</span>
+              <span>${speed + hp + attack + defense + spAttack + spDefense}</span>
+            </div>
+            <meter id="total"
               min="0" max="1530"
               low="500" high="720" optimum="1000"
               value="${speed + hp + attack + defense + spAttack + spDefense}">
-        </meter>
-        </div>
+            </meter>
+          </div>
           <div class="statTypes">
             <div class="statTypeText">
               <div>
                 Weak Against
               </div>
-              
             </div>
-            
-              <div class="statIconHolder">
-                ${weakTypesString==""?'None':weakTypesString}
-                
+            <div class="statIconHolder">
+              ${weakTypesString === "" ? 'None' : weakTypesString}
             </div> 
           </div>
           <div class="statTypes">
@@ -354,49 +305,35 @@ const displayPokemonDetails = async (pokemon) => {
                 Strong Against
               </span>
             </div>
-          
             <div class="statIconHolder">
-            ${strongTypesString==""?'None':strongTypesString}
+              ${strongTypesString === "" ? 'None' : strongTypesString}
+            </div>
           </div>
-          </div>
+        </div>
         `;
-
       })
-      
-    })
+    });
 
-
-
-
-  }
-  else{
+  } else {
     console.log(pokemon[2])
   }
-
-
-
 
   let pokemonDetailsEl = document.getElementById("pokemon-details");
   pokemonDetailsEl.innerHTML = `
         <div class="btn">
-        <button class="previousBtn" onclick="backButton()"><i class="fas fa-chevron-left"></i></button>
-        <button class="nextBtn" onclick="nextPokemon()"><i class="fas fa-chevron-right"></i></button>
+          <button class="previousBtn" onclick="backButton()"><i class="fas fa-chevron-left"></i></button>
+          <button class="nextBtn" onclick="nextPokemon()"><i class="fas fa-chevron-right"></i></button>
         </div>
         <div class="names">
-        <div class="japaneseName">${japaneseName}</div>
-        <div class="name">${name}</div>
-        
+          <div class="japaneseName">${japaneseName}</div>
+          <div class="name">${name}</div>
         </div>
         <div class="top">
-        <div class="image">
-        <img class="imgFront" src="${
-          imageSrc == null ? imageSrc2 : imageSrc
-        }" alt="${name}">
-        <img class="imgBack" src="../assets/img/Icons/default/pokeball.svg" alt="pokeball">
+          <div class="image">
+            <img class="imgFront" src="${imageSrc == null ? imageSrc2 : imageSrc}" alt="${name}">
+            <img class="imgBack" src="assets/img/icons/default/pokeball.svg" alt="pokeball">
+          </div>
         </div>
-
-        </div>
-
   `;
 
   const desiredLanguage = "en";
@@ -405,9 +342,8 @@ const displayPokemonDetails = async (pokemon) => {
 
   for (const entry of pokemon[1].flavor_text_entries) {
     if (entry.language.name === desiredLanguage) {
-      // Replace "\f" with a space in the flavor text
       overview = entry.flavor_text.replace("\f", " ");
-      break; // Stop the loop once we find the English flavor text
+      break;
     }
   }
   for (const entry of pokemon[1].genera) {
@@ -442,44 +378,36 @@ const displayPokemonDetails = async (pokemon) => {
   let tab1 = document.getElementById("tab_1");
   tab1.innerHTML = `
   <div>
-  <div class="overview">
-  <p><span class="genus">${genus}</span><br>${overview}</p>
-  <div class="heightWeight">
-  <span>Height:<br><b>${height}</b></span>
-  <span>Weight:<br><b>${weight}</b></span>
-  </div>
-
-  <div class="types">
-  ${poke_types
-    .map(
-      (type) => `
-    <div class="poke__type__bg ${type}">
-      <img src="../assets/img/Icons/${type}.svg" alt="Type">
+    <div class="overview">
+      <p><span class="genus">${genus}</span><br>${overview}</p>
+      <div class="heightWeight">
+        <span>Height:<br><b>${height}</b></span>
+        <span>Weight:<br><b>${weight}</b></span>
+      </div>
+      <div class="types">
+        ${poke_types
+          .map(
+            (type) => `
+            <div class="poke__type__bg ${type}">
+              <img src="assets/img/icons/${type}.svg" alt="Type">
+            </div>
+          `
+          )
+          .join("")}
+      </div>
     </div>
-  `
-    )
-    .join("")}
+    <div class="about">
+      <div>Id: <b class="id">#${id}</b></div>
+      <div>Gender: <b><i class="fa-solid fa-mars" style="color: #1f71ff;"></i>${male}  <i class="fa-solid fa-venus" style="color: #ff5c74;"></i>${female}</b></div>
+      <span>Abilities: <b>${abilities.join(", ")}</b></span>
+      <span>Catch Rate: <b>${catchRate} (${((catchRate / 255) * 100).toFixed(2)}% chance)</b></span>
+      <span>Base Friendship: <b>${friendship} (${friendship < 50 ? "lower" : friendship < 100 ? "normal" : "higher"})</b></span>
+      <span>Base Exp: <b>${pokemon[0].base_experience}</b></span>
+      <span>Growth Rate: <b>${pokemon[1].growth_rate.name}</b></span>
+      <span>Egg Groups: <b>${eggGroups.join(", ")}</b></span>
+    </div>
   </div>
-  </div>
-
-  <div class="about">
-  <div>Id: <b class="id">#${id}</b></div>
-  <div>Gender: <b><i class="fa-solid fa-mars" style="color: #1f71ff;"></i>${male}  <i class="fa-solid fa-venus" style="color: #ff5c74;"></i>${female}</b></div>
-  <span>Abilities: <b>${abilities.join(", ")}</b></span>
-  <span>Catch Rate: <b>${catchRate} (${((catchRate / 255) * 100).toFixed(
-    2
-  )}% chance)</b></span>
-  <span>Base Friendship: <b>${friendship} (${
-    friendship < 50 ? "lower" : friendship < 100 ? "normal" : "higher"
-  })</b></span>
-  <span>Base Exp: <b>${pokemon[0].base_experience}</b></span>
-  <span>Growth Rate: <b>${pokemon[1].growth_rate.name}</b></span>
-  <span>Egg Groups: <b>${eggGroups.join(", ")}</b></span>
-
-  </div>
-        
-
-`;
+  `;
 };
 
 const tabs = document.querySelectorAll("[data-tab-value]");
@@ -512,4 +440,3 @@ fetchPokemonDetails();
 window.addEventListener("load", function () {
   document.querySelector("body").classList.add("loaded");
 });
-

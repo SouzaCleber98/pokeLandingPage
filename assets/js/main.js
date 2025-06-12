@@ -10,8 +10,6 @@ let currentOffset = 1;        // Próximo ID a ser carregado
 let currentLoadToken = Symbol(); // Token para cancelar lotes antigos
 const debouncedSearch = debounce(search_pokemon, 800);
 
-
-
 function debounce(func, delay) {
   let timeoutId;
   return function (...args) {
@@ -21,8 +19,6 @@ function debounce(func, delay) {
     }, delay);
   };
 }
-
-
 
 // Definição das regiões
 const regions = {
@@ -41,8 +37,8 @@ const regions = {
 async function fetchPokemonList() {
   try {
     const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1000");
-    const data = await response.json(); // Aqui você atribui os dados à variável
-    return data; // Retorna os dados para usar em outro lugar
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error("Erro na requisição:", error);
   }
@@ -91,20 +87,17 @@ async function search_pokemon() {
   } catch (error) {
     console.error("Erro ao buscar Pokémon:", error);
   }
-  // Limpa a Pokédex após a busca
   console.log("cheguei no final");
 
-if (input){
-  console.log("ainda pesquisando");
-  return
-}; // Impedir que a função continue se o input não estiver vazio
+  if (input) {
+    console.log("ainda pesquisando");
+    return;
+  }
 
   isLoading = false;
   isSearching = false;
   console.log("Voltou pro estado inicial");
 }
-
-
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
@@ -146,7 +139,6 @@ async function fetchPokemonByName(name) {
   return fetchWithRetry(`https://pokeapi.co/api/v2/pokemon/${name}`);
 }
 
-
 async function fetchPokemonById(id) {
   return fetchWithRetry(`https://pokeapi.co/api/v2/pokemon/${id}`);
 }
@@ -165,7 +157,7 @@ function createPokemonCard(pokemon) {
   front.style.background = bg;
   front.innerHTML = /* html */`
     <div class="pokeball-bg">
-      <img src="assets/img/Icons/default/pokeball.svg" alt="">
+      <img src="assets/img/icons/default/pokeball.svg" alt="">
     </div>
     <div class="card-image">
       <img data-image-type="front" src="" alt="">
@@ -174,9 +166,8 @@ function createPokemonCard(pokemon) {
     <div class="card-name"><h3>${pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
     }</h3></div>
     <div class="card-type">${pokemon.types.map(t =>
-      `<img class="type-icon type-${t.type.name}" src="assets/img/Icons/${t.type.name}.svg" alt="">`
-    ).join('')
-    }</div>
+      `<img class="type-icon type-${t.type.name}" src="assets/img/icons/${t.type.name}.svg" alt="">`
+    ).join('')}</div>
   `;
 
   const back = document.createElement('div');
@@ -184,7 +175,7 @@ function createPokemonCard(pokemon) {
   back.style.background = bg;
   back.innerHTML = /* html */`
     <div class="pokeball-bg">
-      <img src="assets/img/Icons/default/pokeball.svg" alt="">
+      <img src="assets/img/icons/default/pokeball.svg" alt="">
     </div>
     <div class="card-image">
       <img data-image-type="back" src="" alt="">
@@ -207,9 +198,8 @@ function createPokemonCard(pokemon) {
   tryLoadImage(pokemon.sprites.other.showdown.back_default || pokemon.sprites.back_default)
     .then(url => backImg.src = url).catch(() => { });
   wrapper.addEventListener("click", () => {
-    window.open(`details.html?id=${pokemon.id}`, "_self");
+    window.open(`./details.html?id=${pokemon.id}`, "_self");
   });
-
 }
 
 // dispara o próximo lote
@@ -242,11 +232,8 @@ const loadNextBatch = () => {
 
       // 🚨 Verifica se ainda precisa carregar mais (ex: usuário já estava no final)
       requestAnimationFrame(checkScrollPosition);
-
     });
 };
-
-
 
 function checkScrollPosition() {
   if (isLoading || currentOffset > maxPokemon || isSearching) return;
@@ -284,7 +271,7 @@ function init() {
   document.getElementById('kanto').classList.add('active');
   if (term) {
     const searchbar = document.getElementById("searchbar");
-    searchbar.value = term
+    searchbar.value = term;
     const newUrl = window.location.pathname;
     window.history.replaceState({}, '', newUrl);
     search_pokemon();
@@ -312,8 +299,5 @@ function init() {
   });
 }
 
-
-
 // Inicializa a Pokédex
 init();
-
