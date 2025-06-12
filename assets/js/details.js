@@ -24,30 +24,6 @@ const colors = {
 };
 const main_types = Object.keys(colors);
 
-
-
-
-// const getPokeApi = async (url)=>{
-  
-//    await fetch(url)
-//     .then(
-//       async response => {
-//         let isJson = response.headers.get('content-type')?.includes('application/json');
-//         let data = isJson ? await response.json() : null;
-
-//         // check for error response
-//         if (!response.ok) {
-//             // get error message from body or default to response status
-//             const error = (data && data.message) || response.status;
-//             return Promise.reject(error);
-//         }
-//         // element.innerHTML = JSON.stringify(data, null, 4);
-//     })
-//     .catch(error => {
-//         // element.parentElement.innerHTML = `Error: ${error}`;
-//         console.error('There was an error!', error);
-//     });
-// }
 const getType_data = async(url)=>{
   let res = await fetch(url);
   let data = await res.json();
@@ -246,7 +222,7 @@ const displayPokemonDetails = async (pokemon) => {
         // console.log(res);
 
         let weakTypes=[res.damage_relations.no_damage_to.map((type)=>{
-          return `<img src="./assets/img/Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
+          return `<img src="../assets/img/Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
         })]
 
         // var weakTypesString='';
@@ -255,7 +231,7 @@ const displayPokemonDetails = async (pokemon) => {
         }
         
         let strongTypes=[res.damage_relations.double_damage_to.map((type)=>{
-          return `<img src="./assets/img/Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
+          return `<img src="../assets/img/Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
         })]
         
         // var strongTypesString='';
@@ -389,148 +365,6 @@ const displayPokemonDetails = async (pokemon) => {
       
     })
 
-    
-    // let weakTypes=[...pokemon[2].damage_relations.no_damage_to.map((type)=>{
-    //     return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
-    // })]
-  
-    // var weakTypesString='';
-    // for(let i in weakTypes){
-    //   weakTypesString=weakTypesString+weakTypes[i];
-  
-    // }
-  
-    // let strongTypes=[...pokemon[2].damage_relations.double_damage_to.map((type)=>{
-    //   return `<img src="./Icons/${type.name}.svg" alt="test images" class="${type.name} poke_type_bg"></img>`
-    // })]
-
-    // var strongTypesString='';
-    // for(let i in strongTypes){
-    //   strongTypesString=strongTypesString+strongTypes[i];
-    // }
-
-    // let tab2 = document.getElementById("tab_2");
-    // tab2.innerHTML = `
-    // <div class="stats">
-    // <div class="stat">
-    // <div>
-    // <span> Health:</span>
-    // <span>${hp}</span>
-    // </div>
-    //   <meter id="hp"
-    //   style="content: 'HP';"
-    //      min="0" max="255"
-    //      low="70" high="120" optimum="150"
-    //      value="${hp}">
-    // </meter>
-    // </div>
-  
-  
-    //   <div class="stat">
-    //   <div>
-    // <span> Attack:</span>
-    // <span>${attack}</span>
-    // </div>
-    //   <meter id="attack"
-    //       min="0" max="255"
-    //       low="70" high="120" optimum="150"
-    //       value="${attack}">
-    // </meter>
-    // </div>
-  
-  
-  
-    //   <div class="stat">
-    //   <div>
-    // <span> Defense:</span>
-    // <span>${defense}</span>
-    // </div>
-    //   <meter id="defense"
-    //       min="0" max="255"
-    //       low="70" high="120" optimum="150"
-    //       value="${defense}">
-    // </meter>
-    // </div>
-  
-  
-  
-    //     <div class="stat">
-    //   <div>
-    // <span> Sp. Atk:</span>
-    // <span>${spAttack}</span>
-    // </div>
-    //   <meter id="spattack"
-    //       min="0" max="255"
-    //       low="70" high="120" optimum="150"
-    //       value="${spAttack}">
-    // </meter>
-    // </div>
-  
-  
-    //     <div class="stat">
-    //   <div>
-    // <span> Sp. Def:</span>
-    // <span>${spDefense}</span>
-    // </div>
-    //   <meter id="spdefense"
-    //       min="0" max="255"
-    //       low="70" high="120" optimum="150"
-    //       value="${spDefense}">
-    // </meter>
-    // </div>
-  
-  
-  
-    //   <div class="stat">
-    //   <div>
-    // <span>Speed:</span>
-    // <span>${speed}</span>
-    // </div>
-    //   <meter id="speed"
-    //       min="0" max="255"
-    //       low="70" high="120" optimum="150"
-    //       value="${speed}">
-    // </meter>
-    // </div>
-  
-                              
-    //     <div class="stat">
-    //     <div>
-    // <span> Total:</span>
-    // <span>${speed + hp + attack + defense + spAttack + spDefense}</span>
-    // </div>
-    //   <meter id="total"
-    //       min="0" max="1530"
-    //       low="500" high="720" optimum="1000"
-    //       value="${speed + hp + attack + defense + spAttack + spDefense}">
-    // </meter>
-    // </div>
-    //   <div class="statTypes">
-    //     <div class="statTypeText">
-    //       <div>
-    //         Weak Against
-    //       </div>
-          
-    //     </div>
-        
-    //       <div class="statIconHolder">
-    //         ${weakTypesString==""?'None':weakTypesString}
-            
-    //      </div> 
-    //   </div>
-    //   <div class="statTypes">
-    //     <div class="statTypeText">
-    //       <span>
-    //         Strong Against
-    //       </span>
-    //     </div>
-      
-    //     <div class="statIconHolder">
-    //      ${strongTypesString==""?'None':strongTypesString}
-    //    </div>
-    //   </div>
-    // `;
-
 
 
 
@@ -558,7 +392,7 @@ const displayPokemonDetails = async (pokemon) => {
         <img class="imgFront" src="${
           imageSrc == null ? imageSrc2 : imageSrc
         }" alt="${name}">
-        <img class="imgBack" src="./assets/img/Icons/default/pokeball.svg" alt="pokeball">
+        <img class="imgBack" src="../assets/img/Icons/default/pokeball.svg" alt="pokeball">
         </div>
 
         </div>
@@ -620,7 +454,7 @@ const displayPokemonDetails = async (pokemon) => {
     .map(
       (type) => `
     <div class="poke__type__bg ${type}">
-      <img src="./assets/img/Icons/${type}.svg" alt="Type">
+      <img src="../assets/img/Icons/${type}.svg" alt="Type">
     </div>
   `
     )
