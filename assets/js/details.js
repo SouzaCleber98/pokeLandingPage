@@ -193,7 +193,7 @@ const displayPokemonDetails = async (pokemon) => {
       val.then((res) => {
 
         let weakTypes = res.damage_relations.no_damage_to.map((type) => {
-          return `<img src="../assets/img/icons/${type.name}.svg" alt="${type.name}" class="${type.name} poke_type_bg">`
+          return `<img src="assets/img/icons/${type.name}.svg" alt="${type.name}" class="${type.name} poke_type_bg">`
         });
 
         weakTypes.forEach((item) => {
@@ -201,7 +201,7 @@ const displayPokemonDetails = async (pokemon) => {
         });
 
         let strongTypes = res.damage_relations.double_damage_to.map((type) => {
-          return `<img src="../assets/img/icons/${type.name}.svg" alt="${type.name}" class="${type.name} poke_type_bg">`
+          return `<img src="assets/img/icons/${type.name}.svg" alt="${type.name}" class="${type.name} poke_type_bg">`
         });
 
         strongTypes.forEach((item) => {
@@ -331,7 +331,7 @@ const displayPokemonDetails = async (pokemon) => {
         <div class="top">
           <div class="image">
             <img class="imgFront" src="${imageSrc == null ? imageSrc2 : imageSrc}" alt="${name}">
-            <img class="imgBack" src="../assets/img/icons/default/pokeball.svg" alt="pokeball">
+            <img class="imgBack" src="assets/img/icons/default/pokeball.svg" alt="pokeball">
           </div>
         </div>
   `;
@@ -389,7 +389,7 @@ const displayPokemonDetails = async (pokemon) => {
           .map(
             (type) => `
             <div class="poke__type__bg ${type}">
-              <img src="../assets/img/Icons/${type}.svg" alt="Type">
+              <img src="assets/img/icons/${type}.svg" alt="Type">
             </div>
           `
           )

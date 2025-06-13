@@ -157,7 +157,7 @@ function createPokemonCard(pokemon) {
   front.style.background = bg;
   front.innerHTML = /* html */`
     <div class="pokeball-bg">
-      <img src="./assets/img/icons/default/pokeball.svg" alt="">
+      <img src="assets/img/icons/default/pokeball.svg" alt="">
     </div>
     <div class="card-image">
       <img data-image-type="front" src="" alt="">
@@ -166,7 +166,7 @@ function createPokemonCard(pokemon) {
     <div class="card-name"><h3>${pokemon.name[0].toUpperCase() + pokemon.name.slice(1)
     }</h3></div>
     <div class="card-type">${pokemon.types.map(t =>
-      `<img class="type-icon type-${t.type.name}" src="./assets/img/icons/${t.type.name}.svg" alt="">`
+      `<img class="type-icon type-${t.type.name}" src="assets/img/icons/${t.type.name}.svg" alt="">`
     ).join('')}</div>
   `;
 
@@ -175,7 +175,7 @@ function createPokemonCard(pokemon) {
   back.style.background = bg;
   back.innerHTML = /* html */`
     <div class="pokeball-bg">
-      <img src="../assets/img/icons/default/pokeball.svg" alt="">
+      <img src="assets/img/icons/default/pokeball.svg" alt="">
     </div>
     <div class="card-image">
       <img data-image-type="back" src="" alt="">
